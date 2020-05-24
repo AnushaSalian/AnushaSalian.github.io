@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>SOLVE Simulation</title>
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/> -->
+<link rel="stylesheet" href="css/bootstrap.min.css" />
+<style>
+#can {
+ border: 1px solid black;
+}
+</style>
+<script>
+function setSimualtionScreen(ele) {
+	document.getElementById("simHead").innerHTML = ele.innerHTML;
+	console.log(ele);
+	switch(ele.id) {
+		case "BMS": document.getElementById("can").src = "BendingMS/bendingMs.html";
+						break;
+		case "BHT": document.getElementById("can").src = "Brinell/brinell.html";
+						break;
+		case "RHT": document.getElementById("can").src = "";
+						break;
+		case "VHT": document.getElementById("can").src = "";
+						
+	}
+}
+</script>
+</head>
+<body>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-xs-3">
+			<div class="panel panel-default">
+				<div class="panel-heading">Modifies Simulations of SOM</div>
+					<div class="panel-body">
+					<div class="btn-toolbar">
+						<button id="BMS" class="btn btn-primary btn-sm" onclick="setSimualtionScreen(this);" >Bending Test on Mild Steel</button><br><br>
+						<button id="BHT" class="btn btn-primary btn-sm" onclick="setSimualtionScreen(this);" >Brinell Hardness Test</button><br><br>
+						<button id="RHT" class="btn btn-primary btn-sm" onclick="setSimualtionScreen(this);" disabled>Rockwell Hardness Test</button><br><br>
+						<button id="VHT" class="btn btn-primary btn-sm" onclick="setSimualtionScreen(this);" disabled>Vickers Hardness Test</button><br><br>
+					</div>
+					</div>
+				</div>
+			</div>
+		<div class="col-xs-9">
+			<h4 id="simHead">SIMULATION</h4>
+			<iframe id="can"  width="1000" height = "800" src="" style="border:none"></iframe>
+		</div>
+	</div>
+</div>
+
+</body>
+
+</html>
