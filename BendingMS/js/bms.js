@@ -322,7 +322,7 @@ var layout = {
     fixedrange: true
   },
   yaxis: {
-    title:'Total Load ( Kg )',
+    title:'Total Load ( kg )',
     fixedrange: true
   }
 };    
