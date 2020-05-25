@@ -22,7 +22,9 @@ function setSimualtionScreen(ele) {
 		case "RHT": document.getElementById("can").src = "Rockwell/rockwell.html";
 						break;
 		case "VHT": document.getElementById("can").src = "Vickers/vickers.html";
-						
+						break;
+		case "IJ": document.getElementById("can").src = "impact of jet_final/index.html";
+						break;				
 	}
 }
 </script>
@@ -32,13 +34,14 @@ function setSimualtionScreen(ele) {
 	<div class="row">
 		<div class="col-xs-3">
 			<div class="panel panel-default">
-				<div class="panel-heading">Modified Simulations of SOM</div>
+				<div class="panel-heading">Modified Simulations of SOM & FM</div>
 					<div class="panel-body">
 					<div class="btn-toolbar">
 						<button id="BMS" class="btn btn-primary btn-sm" onclick="setSimualtionScreen(this);" >Bending Test on Mild Steel</button><br><br>
 						<button id="BHT" class="btn btn-primary btn-sm" onclick="setSimualtionScreen(this);" >Brinell Hardness Test</button><br><br>
 						<button id="RHT" class="btn btn-primary btn-sm" onclick="setSimualtionScreen(this);" >Rockwell Hardness Test</button><br><br>
 						<button id="VHT" class="btn btn-primary btn-sm" onclick="setSimualtionScreen(this);" >Vickers Hardness Test</button><br><br>
+						<button id="IJ" class="btn btn-primary btn-sm" onclick="setSimualtionScreen(this);" >Impact of Jet</button><br><br>
 					</div>
 					</div>
 				</div>

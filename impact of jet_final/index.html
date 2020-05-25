@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+
+<title>SOLVE</title>
+<link rel="stylesheet" href="sgca.css" />
+<link href="mathstyle.css" rel="stylesheet" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script> 
+<script type="text/javascript" src= "jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src= "sgca.js"></script>
+<script type="text/javascript" src= "jquery-2.1.4.js"></script>
+<script type="text/javascript" src= "ej.web.all.js"></script>
+
+<script>
+var simsubscreennum=0;
+<!-- var flat=[25,50,75];			 -->
+<!-- var hemi=[50,100,150]; -->
+<!-- var inclined=[10,15,20]; -->
+
+var hemi=[[50,100,150],
+          [41,32,26],
+		  [439.02,562.5,692.31],
+		  [3.58,4.58,5.64],
+		  [3.143,5.159,7.815],
+		  [2.289,4.578,3.867],
+		  [0.728,0.887,0.879]];
+		  
+var flat=[[25,50,75],
+          [43,31,25],
+		  [418.6,580.65,720],
+		  [3.41,4.73,5.87],
+		  [1.429,2.479,4.226],
+		  [1.145,2.289,3.434],
+		  [0.801,0.833,0.812]];			
+
+var inclined=[[10,15,20],
+              [61,50,43],
+			  [295.08,360,418.60],
+			  [2.41,2.93,3.41],
+			  [1.689,2.514,3.399],
+			  [0.458,0.687,0.916],
+			  [0.271,0.273,0.269]];
+
+</script>
+</head>
+
+
+
+<body style="margin:0; font-family:verdana; " >
+<!--Simulation Screen start		-->
+<div id="simscreen">
+
+<!--Title of Simulation		-->
+<div id="title"><h3>IMPACT OF JET ON VANES</h3></div>
+
+<!--SubScreen Home	-->	
+<div class="simsubscreen" id="canvas0">
+<h4 class="incanvas" style="font-family:verdana;" >Objective</h4>
+<p class="incanvas" style="font-family:verdana; font-size:14px;">To determine the coefficient of impact of jet on the vanes.</p>
+<h4 class="incanvas" style="font-family:verdana;">Apparatus used:</h4>
+<p class="incanvas" style="font-family:verdana; font-size:14px;" >Impact of jet on vanes set up with nozzle, vane holder, different types of vanes, weight balance with </p>
+<p class="incanvas" style="font-family:verdana; font-size:14px;" >weights, scale etc.</p>
+<img id="" style="position: absolute; left: 120px; top: 140px;" src="images/1.png"/>
+</div>
+
+
+
+
+<!--Step1	-->	
+<div class="simsubscreen" id="canvas1" style="visibility:hidden">
+<strong id="titlestep" class="incanvas">STEP </strong>
+<span class="circlebg" id="stepnumber">&nbsp;1&nbsp;</span>
+
+<p id="pumptext" class="steptext" style="font-f3amily:verdana; font-size:14px;">Choose the type of vane</p>
+<!-- <form id="vane" style="position: absolute; left: 100px; top: 115px;  font-family:verdana; font-size:14px;"> -->
+  <!-- <input type="radio" id="f" name="subject" value="river" > Flat vane <br><br><br><br><br><br> -->
+  <!-- <input type="radio" id="h" name="subject" value="river" > Hemi spherical vane <br><br><br><br><br><br><br> -->
+  <!-- <input type="radio" id="i" name="subject" value="beach"> Inclined vane -->
+<!-- </form> -->
+<img id="can1-1" style="position: absolute; left: 25px; top: 115px; cursor:pointer;" src="images/flat.png"/>
+<p id="vane1" style="font-family:verdana; font-size:14px; position: absolute; left: 25px; top: 200px;" >Flat vane</p>
+
+<img id="can1-2" style="position: absolute; left: 260px; top: 115px; cursor:pointer;" src="images/hemi.png"/>
+<p id="vane2" style="font-family:verdana; font-size:14px; position: absolute; left: 230px; top: 200px; cursor:pointer;" >Hemi spherical vane </p>
+
+<img id="can1-3" style="position: absolute; left: 485px; top: 115px; cursor:pointer; " src="images/inclined.png"/>
+<p id="vane3" style="font-family:verdana; font-size:14px; position: absolute; left: 470px; top: 200px; cursor:pointer;" >Inclined vane </p>
+
+<p id="vane4" style="font-family:verdana; font-size:14px; position: absolute; left: 25px; top: 275px; cursor:pointer;" ></p>
+
+</div>
+
+<!--step2-->
+<div class="simsubscreen" id="canvas2" style="visibility:hidden">
+<strong id="titlestep" class="incanvas">STEP </strong>
+<span class="circlebg" id="stepnumber">&nbsp;2&nbsp;</span>
+<p id="pumptext" class="steptext" style="font-family:verdana; font-size:14px;">&nbsp;Move the counter balance weight to make the arm horizontal.<p>
+<img id="can2-1f" style="position: absolute; left:180px; top: 100px; visibility:hidden;" src="images/2f.png"/>
+<img id="can2-1h" style="position: absolute; left:180px; top: 100px; visibility:hidden;" src="images/2h.png"/>
+<img id="can2-1i" style="position: absolute; left:180px; top: 100px; visibility:hidden;" src="images/2i.png"/>
+
+<img id="can2-out" style="position: absolute; left:514px; top: 385px; visibility:hidden;" src="images/outlet_on.png"/>
+
+<img id="can2-2" style="position: absolute; left:181px; top: 104.50px; visibility:hidden;" src="images/2.1.png"/>
+<img id="can2-3" style="position: absolute; left:372.50px; top: 103.25px; cursor:zoom-in; visibility:hidden;" src="images/2.2.png"/>
+<img id="can2-4" style="position: absolute; left:525px; top: 107px; cursor:pointer; visibility:hidden;" src="images/hand.png"/>
+<img id="can2-5" style="position: absolute; left:25px; top: 115px; cursor:pointer; visibility:hidden;" src="images/3.png"/>
+<img id="can2-6" style="position: absolute; left:40px; top: 120.50px; cursor:pointer; visibility:hidden;" src="images/3.1.png"/>
+<!-- <img id="can2-7" style="position: absolute; left:190px; top: 115px; cursor:zoom-in; " src="images/2.3.png"/> -->
+<img id="can2-7" style="position: absolute; left:190px; top: 103px; cursor:zoom-in; visibility:hidden; " src="images/3a.png"/>
+
+<p id="v2-1" style="position:absolute; top: 150px; left:50px; font-family:verdana; font-size:16px; visibility:hidden;">Click on arrow to proceed</p>
+
+</div>
+
+
+<!--Step3	-->	
+<div class="simsubscreen" id="canvas3" style="visibility:hidden"> 
+<strong id="titlestep" class="incanvas">STEP &nbsp;</strong> 
+<span class="circlebg" id="stepnumber">&nbsp;3&nbsp;</span>
+<p id="pumptext-2" class="steptext" style="font-family:verdana; font-size:14px;">&nbsp;Once the balance is made, the length of weight pan and counter balance distance is measured using a scale.</p> 
+<img id="can3-2" style="position: absolute; left:61px; top: 123.25px; visibility:hidden;" src="images/4.png"/>
+<img id="can3-2a" style="position: absolute; left:66px; top: 124.75px; visibility:hidden;" src="images/3a.png"/>
+<img id="can3-1f" style="position: absolute; left:60px; top: 120px; visibility:hidden;" src="images/2f.png"/>
+<img id="can3-1h" style="position: absolute; left:60px; top: 120px; visibility:hidden;" src="images/2h.png"/>
+<img id="can3-1i" style="position: absolute; left:60px; top: 120px; visibility:hidden;" src="images/2i.png"/>
+
+<img id="can3-out" style="position: absolute; left:394px; top: 405px; visibility:hidden;" src="images/outlet_on.png"/>
+
+<img id="can3-6" style="position: absolute; left:189.25px; top: 120px; visibility:hidden;" src="images/5.png"/>
+<img id="can3-3" style="position: absolute; left:252.50px; top: 120.55px; visibility:hidden;" src="images/2.2.png"/>
+<img id="can3-4" style="position: absolute; left:510px; top: 100px; visibility:hidden; cursor:pointer;" src="images/scale.png"/>
+<img id="can3-5" style="position: absolute; left:-50px; top: 95px;   visibility:hidden;" src="images/scale2.png"/>
+<img id="can3-7" style="position: absolute; left:195px; top: 78px; visibility:hidden;" src="images/sa.png"/>
+<img id="can3-8" style="position: absolute; left:78px; top: 52px; visibility:hidden;" src="images/ba.png"/>
+<p id="v3-1" style="position:absolute; left: 470px; top:200px; visibility:hidden; font-family:verdana; font-size:14px;">a = 1.25cm</p>
+<p id="v3-2" style="position:absolute; left: 470px; top:250px; visibility:hidden; font-family:verdana; font-size:14px;">b = 13cm </p>
+</div>
+
+ 
+<!--Step4	-->	
+<div class="simsubscreen" id="canvas4" style="visibility:hidden">
+<strong class="incanvas">STEP &nbsp;</strong><span class="circlebg">&nbsp;4&nbsp;</span>
+<p class="steptext" style="font-family:verdana; font-size:14px;">&nbsp;Put weight on the pan.</p>
+<img id="can4-2" style="position: absolute; left:21px; top: 123.25px; visibility:hidden;" src="images/4.png"/>
+<img id="can4-1f" style="position: absolute; left:20px; top: 120px; visibility:hidden;" src="images/2f.png"/>
+<img id="can4-1h" style="position: absolute; left:20px; top: 120px; visibility:hidden;" src="images/2h.png"/>
+<img id="can4-1i" style="position: absolute; left:20px; top: 120px; visibility:hidden;" src="images/2i.png"/>
+
+<img id="can4-out" style="position: absolute; left:354px; top: 405px; visibility:hidden;" src="images/outlet_on.png"/>
+
+<img id="can4-4" style="position: absolute; left:149.25px; top: 120px; visibility:hidden; " src="images/5.png"/>
+<img id="can4-3" style="position: absolute; left:212.50px; top: 120.55px; visibility:hidden;" src="images/2.2.png"/>
+
+<!-- <img id="can4-6" style="position: absolute; left:460px; top: 143px; visibility:hidden;" src="images/4.12.png"/> -->
+
+ <img id="can4-5" style="position: absolute; left:21px; top: 123.25px; visibility:hidden; cursor:zoom-in;" src="images/4.1.png"/> 
+
+<img id="can4-7" style="position: absolute; left:21px; top: 125.20px; visibility:hidden; " src="images/4.12b.png"/>
+<img id="can4-8" style="position: absolute; left:97.20px; top: 131px; visibility:hidden;" src="images/3.1.png"/>
+
+<!-- <img id="can4-7" style="position: absolute; left:475px; top: 115px; visibility:hidden;" src="images/3.png"/> -->
+<!-- <img id="can4-8" style="position: absolute; left:507px; top: 120.50px; visibility:hidden;" src="images/3.1.png"/> -->
+<img id="can4-9" style="position: absolute; left:505px; top: 400px; visibility:hidden;" src="images/wight.png"/>
+<img id="can4-10" style="position: absolute; left:545px; top: 408.5px; visibility:hidden;" src="images/25.png"/>
+<img id="can4-11" style="position: absolute; left:545px; top: 408.5px; visibility:hidden;" src="images/50.png"/>
+<img id="can4-12" style="position: absolute; left:545px; top: 408.5px; visibility:hidden;" src="images/75.png"/>
+
+<img id="can4-13" style="position: absolute; left:514px; top: 390px; visibility:hidden;" src="images/hand2.png"/>
+
+<img id="can4-10a" style="position: absolute; left:75px; top: 425.50px; visibility:hidden;" src="images/25.png"/>
+<!-- <p id="v4-1" style="position:absolute; left: 400px; top:150px; visibility:hidden; font-family:verdana; font-size:16px;"></p> -->
+
+<p id="v4-1" style="position: absolute; visibility:hidden; left: 410px; top:150px; font-family:verdana; font-size:16px;"></p>
+</div>
+
+
+<!--Step5	-->	
+<div class="simsubscreen" id="canvas5" style="visibility:hidden;">
+<strong class="incanvas">STEP &nbsp;</strong><span class="circlebg">&nbsp;5&nbsp;</span>
+<p class="steptext" style="font-family:verdana; font-size:14px;" >&nbsp;Open the inlet valve and bring the bubble to centre in spirit level using the counter balance.</p>
+<img id="can5-2a" style="position: absolute; left:26px; top: 124px; cursor:zoom-in; visibility:hidden;" src="images/3a.png"/>
+<img id="can5-2" style="position: absolute; left:21px; top: 123.25px; visibility:hidden;" src="images/4.png"/>
+
+<img id="can5-8w" style="position: absolute; left: 156px; top: 188.5px;  visibility:hidden;" src="images/wat.png">
+<img id="can5-8wh" style="position: absolute; left: 145px; top: 187px; visibility:hidden;" src="images/wathemi.png">
+
+<img id="can5-11" style="position: absolute; left:395px; top: 440px; visibility:hidden;" src="images/water.png"/>
+
+<img id="can5-1f" style="position: absolute; left:20px; top: 120px; visibility:hidden;" src="images/2f.png"/>
+<img id="can5-1h" style="position: absolute; left:20px; top: 120px; visibility:hidden;" src="images/2h.png"/>
+<img id="can5-1i" style="position: absolute; left:20px; top: 120px; visibility:hidden;" src="images/2i.png"/>
+<img id="can5-4" style="position: absolute; left:149.25px; top: 120px; visibility:hidden;" src="images/5.png"/>
+<img id="can5-3" style="position: absolute; left:212.50px; top: 120.55px; cursor:pointer;" src="images/2.2.png"/>
+
+<img id="can5-out" style="position: absolute; left:354px; top: 405px; visibility:hidden;" src="images/outlet_on.png"/>
+
+<img id="can5-5" style="position: absolute; left:78.85px; top: 311.5px; cursor:zoom-in;" src="images/inletvalve.png"/>
+
+<img id="can5-6" style="position: absolute; left: 550px; top: 230px; visibility:hidden;" src="images/pipe.png">
+<img id="can5-7" style="position: absolute; left: 545px; top: 267px; visibility:hidden; cursor:pointer;" src="images/hand3.png">
+
+
+<img id="can5-8wf" style="position: absolute; left: 156px; top: 186.5px;  visibility:hidden;" src="images/watflat.png">
+
+<img id="can5-8wi" style="position: absolute; left: 156px; top: 182px; visibility:hidden;" src="images/watincli.png">
+
+<img id="can5-9" style="position: absolute; left: 222.10px; top: 272.99px; visibility:hidden;" src="images/waterpipe.png">
+
+<img id="can5-10a" style="position: absolute; left:355px; top: 115px; cursor:pointer; visibility:hidden;" src="images/3.png"/>
+<img id="can5-10b" style="position: absolute; left:400px; top: 120.50px; cursor:pointer; visibility:hidden;" src="images/3.1.png"/>
+
+<img id="can5-12" style="position: absolute; left:500px; top: 120.50px; cursor:pointer; visibility:hidden;" src="images/hand.png"/>
+
+
+
+</div>
+
+<!--Step6	-->	
+<div class="simsubscreen" id="canvas6" style="visibility:hidden;">
+<strong class="incanvas">STEP &nbsp;</strong><span class="circlebg">&nbsp;6&nbsp;</span>
+<p class="steptext" style="font-family:verdana; font-size:14px;" >&nbsp;Close outlet valve and find discharge by noting the time taken by water to fill certain height in the collecting.</p>
+<img id="can6-2" style="position: absolute; left:-11px; top: 123.25px;  visibility:hidden;" src="images/4.png"/>
+<img id="can6-2a" style="position: absolute; left:-6px; top: 124px;  visibility:hidden;" src="images/3a.png"/>
+
+<img id="can6-8w" style="position: absolute; left: 126px; top: 188.5px;  visibility:hidden;" src="images/wat.png">
+<img id="can6-8wh" style="position: absolute; left: 115px; top: 187px; visibility:hidden;" src="images/wathemi.png">
+
+<img id="can6-10" style="position: absolute; left:364px; top: 451px; visibility:hidden;" src="images/water.png"/>
+
+<img id="can6-1f" style="position: absolute; left:-10px; top: 120px; visibility:hidden;" src="images/2f.png"/>
+<img id="can6-1h" style="position: absolute; left:-10px; top: 120px; visibility:hidden;" src="images/2h.png"/>
+<img id="can6-1i" style="position: absolute; left:-10px; top: 120px; visibility:hidden;" src="images/2i.png"/>
+<img id="can6-6" style="position: absolute; left:119.25px; top: 120px;  visibility:hidden;" src="images/5.png"/>
+<img id="can6-3" style="position: absolute; left:182.50px; top: 120.55px;  visibility:hidden;" src="images/2.2.png"/>
+
+<img id="can6-8wf" style="position: absolute; left: 126px; top: 186.5px;  visibility:hidden;" src="images/watflat.png">
+<img id="can6-8wi" style="position: absolute; left: 126px; top: 182px; visibility:hidden;" src="images/watincli.png">
+
+<img id="can6-out" style="position: absolute; left:324px; top: 405px; visibility:hidden; cursor:pointer;" src="images/outlet_on.png"/>
+<img id="can6-outoff" style="position: absolute; left:324px; top: 405px; visibility:hidden;" src="images/outlet_off.png"/>
+
+<img id="can6-4" style="position: absolute; left: 403px; top: 335px; visibility:hidden;" src="images/wtrblu.png">
+<img id="can6-5" style="position: absolute; left: 403px; top: 350px;" src="images/wtrblank.png">
+<img id="can6-6" style="position: absolute; left: 403px; top: 65px;" src="images/measuring tube.png">
+
+<img id="can6-7" style="position: absolute; left: 499px; top: 140px;" src="images/stopwatch.png"/>
+<img id="can6-8" style="position: absolute; left: 567px; top: 211px;" src="images/needle.png"/>
+
+
+<img id="can6-9" style="position: absolute; left: 192.10px; top: 272.99px; " src="images/waterpipe.png">
+
+<p id="v6-1" style="position:absolute; top: 390px; left:390px"> Time taken by water to fill 5cm height, t =</p>
+
+
+<div class="tooltip" style="position:absolute; top:420px; left:390px; visibility:hidden;">
+	<p id="v6-2">Discharge of water, Q = </p>
+	<span id="fcan4-11" class="tooltiptext" ><span>Q (cm<sup>3</sup>/sec) = <span class="frac"><sup>A &times; h</sup><span>&frasl;</span><sub>t</sub></span><br>Where, A = 3600cm<sup>2</sup></span></span>
+</div> 
+
+</div>
+
+
+<!--Step7	-->	
+<div class="simsubscreen" id="canvas7" style="visibility:hidden;">
+
+<span id="ap1" class="ttip" style="border-bottom:1px dotted ; color:red; position:absolute; left:430px; top: 70px; text-align:justify;"><strong>Observations</strong>
+<span  class="ttiptext" style="text-align:-webkit-justify;">
+</br>
+<p>Length of channel = 60cm</p>
+<p>Breadth of channel = 60cm</p>
+<p>Area of collecting tank = 3600cm<sup>2</sup></p><!-- 60 x 40 -->
+
+<p>Diameter of nozzle, d = 1.25 cm</p>
+<span class="tooltip">Area of the nozzle, A = 1.2266cm<sup>2</sup>
+	<span id="fcan4-11" class="tooltiptext" ><span>A = <span class="frac"><sup>&pi; &times; d<sup>2</sup></sup><span>&frasl;</span><sub>4</sub></span> </span></span>
+</span>
+
+<p id="v7-1">Discharge of water, Q = </p>
+
+<p>Density of water, &rho; = 1g/cm<sup>3</sup></p>
+
+<p>Distance a = 13.5cm</p>
+<p>Distance b = 63cm</p>
+<p id="v7-2">Wieght on the pan, W = </p>
+
+</span>
+</span>
+
+<h3 style="position:absolute; left: 0px; top:50px;">Calculation:</h3>
+<p id="v7-4f" style="position:absolute; top: 100px; left:15px; visibility:hidden; border-bottom-style:double;"> For Flat vane: </p>
+<p id="v7-4h" style="position:absolute; top: 100px; left:15px; visibility:hidden; border-bottom-style:double;"> For curved vane (hemispherical): </p>
+<p id="v7-4i" style="position:absolute; top: 100px; left:15px;; visibility:hidden; border-bottom-style:double;"> For inclined vane (&theta; =60&deg; with the horizontal):</p>
+
+<div id="vp7-5" style="position:absolute; left:15px; top: 150px;">
+	<p>Velocity of jet, V = <span class="frac"><sup title="Discharge of water">Q</sup><span>&frasl;</span><sub title="Area of the nozzle">A</sub></span> = <span id="v7-5"></span></p>
+</div>
+
+<div id="vp7-6" style="position:absolute; left:15px; top: 210px; visibility:hidden; ">
+	<p id="v7-6">Theoretical force, F<sub>th</sub> = </p>
+</div>
+
+<div id="vp7-7" style="position:absolute; left:15px; top: 260px; visibility:hidden; ">
+	<p>Actual force, F<sub>act</sub> = <span class="frac"><sup>W &times; b</sup><span>&frasl;</span><sub>a</sub></span> = <span id="v7-7"></span></p>
+</div>
+
+<div id="vp7-8" style="position:absolute; left:15px; top: 320px; visibility:hidden; ">
+	<p>Coefficient of impact, C<sub>i</sub> = <span class="frac"><sup title="Actual force">F<sub>act</sub></sup><span>&frasl;</span><sub title="Theoretical force">F<sub>th</sub></sub></span> = <span id="v7-8"></span></p>
+</div>
+
+</div>
+
+
+<!--Step8	-->	
+
+<div class="simsubscreen" id="canvas8" style="visibility:hidden">
+<center><h2 id="step8" style="font-family:verdana;">Characteristic Curves<h2></center></p>
+<center><span id="step8text1" style="border: 2px solid; position:absolute;top: 60px; left:220px;cursor:pointer;font-family:verdana; font-size:14px;">
+Theoretical force (F<sub>th</sub>) vs Actual force (F<sub>act</sub>) </span></center>
+<div id="chartContainer" style="height: 420px; width: 600px;margin-left:25px;margin-right:100px;margin-top:50px"></div>
+</div>
+
+
+<div id="">	
+<p id="trial" style="text-transform: uppercase;visibility :hidden; font-weight: bold;"><strong>Trial = </strong></p>
+</div>
+
+	
+<!--next  Arrow	-->	
+<div id="nav">
+	<img id="nextButton" onclick="navNext(); " src="images/Next.png" />
+</div>
+
+<!--Previous  Arrow	-->	
+<div id="nav">
+	<img id="prevButton" style="visibility:hidden;" onclick="navPrev(); " src="images/Previous.png" />
+</div>
+
+
+<!--Blinking Arrow	-->	
+<img class ="" id="arrow1" style="visibility:hidden;" src="images/arrow1.png"/>
+
+<div id="copyright"> &copy; 2016 - 2020 SOLVE - The Virtual Lab @ NITK Surathkal, Department of Applied Mechanics & Hydraulics</div>
+</body>
+</html>
