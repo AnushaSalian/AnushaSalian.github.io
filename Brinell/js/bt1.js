@@ -5,6 +5,7 @@ var a;
 var firsttime=false;
 var hbw1,hbw2,ad1,ad2,avg;
 var i=0;
+
 var count1=0,count2=0;
 //check for type of device
 var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
@@ -135,22 +136,22 @@ function checkval()
 	}
 	if(flag==1)
 	{
-	document.getElementById('5-10').innerHTML="Actual HBW = "+ir[7]+" Kg/mm<sup>2</sup>";
+	document.getElementById('5-10').innerHTML="Actual HBW = "+ir[7]+" kg/mm<sup>2</sup>";
 	document.getElementById('5-9').innerHTML=ir[7];
 	}
 	if(flag==2)
 	{
-	document.getElementById('5-10').innerHTML="Actual HBW = "+st[7]+" Kg/mm<sup>2</sup>";
+	document.getElementById('5-10').innerHTML="Actual HBW = "+st[7]+" kg/mm<sup>2</sup>";
 	document.getElementById('5-9').innerHTML=st[7];
 	}
 	if(flag==3)
 	{
-	document.getElementById('5-10').innerHTML="Actual HBW = "+br[7]+" Kg/mm<sup>2</sup>";
+	document.getElementById('5-10').innerHTML="Actual HBW = "+br[7]+" kg/mm<sup>2</sup>";
 	document.getElementById('5-9').innerHTML=br[7];
 	}
 	if(flag==4)
 	{
-	document.getElementById('5-10').innerHTML="Actual HBW = "+alu[7]+" Kg/mm<sup>2</sup>";
+	document.getElementById('5-10').innerHTML="Actual HBW = "+alu[7]+" kg/mm<sup>2</sup>";
 	document.getElementById('5-9').innerHTML=alu[7];
 	}
 	document.getElementById('nextButton').style.visibility="visible";
@@ -524,7 +525,7 @@ function magic()
 		document.getElementById("arrow1").style.transform = "rotate(0deg)";
 		
 		var elmt = document.getElementById('4-8');
-		if (isMobile) 
+		if(isMobile) 
 		{
 			elmt.innerHTML = "Click on the knob <br/>to measure the<br/>Impression diameter";
 			moveKnobonClick();
@@ -746,7 +747,6 @@ function magic()
 	
 }
     
-	
 	function step2()
 	{
 		myStopFunction();
@@ -967,74 +967,76 @@ function magic()
 			}
 		},1000);
 	}
+	
 	function step3()
 	{
-		 myStopFunction();
-         document.getElementById('3-2on').style.visibility="hidden";
-         document.getElementById('3-2off').style.visibility="visible";
-		 setTimeout(function(){
-		 myInt = setInterval(function(){ animatearrow(); }, 500);
-		     document.getElementById('arrow1').style="visibility:visible ;position:absolute; left:465px; top:200px; height: 20px; z-index: 10;";
-		     document.getElementById("arrow1").style.WebkitTransform = "rotate(270deg)"; 
-		     // Code for IE9
-		     document.getElementById("arrow1").style.msTransform = "rotate(270deg)"; 
-		     // Standard syntax
-		     document.getElementById("arrow1").style.transform = "rotate(270deg)";
-	         document.getElementById('3-3un').onclick=function(){step31();}
-		 },300);
+		myStopFunction();
+        document.getElementById('3-2on').style.visibility="hidden";
+        document.getElementById('3-2off').style.visibility="visible";
+		setTimeout(function()
+		{
+			myInt = setInterval(function(){ animatearrow(); }, 500);
+		    document.getElementById('arrow1').style="visibility:visible ;position:absolute; left:465px; top:200px; height: 20px; z-index: 10;";
+		    document.getElementById("arrow1").style.WebkitTransform = "rotate(270deg)"; 
+		    // Code for IE9
+		    document.getElementById("arrow1").style.msTransform = "rotate(270deg)"; 
+		    // Standard syntax
+		    document.getElementById("arrow1").style.transform = "rotate(270deg)";
+	        document.getElementById('3-3un').onclick=function(){step31();}
+		},300);
 	}	
 		
-		
-		
 	function step31()
-	 {
-		 myStopFunction();
-		 document.getElementById('3-3un').style.visibility="hidden";
-         document.getElementById('3-3').style.visibility="visible";
-         document.getElementById('3-4c').style.visibility="visible";
-         document.getElementById('3-4n').style.visibility="visible";
-		 document.getElementById('3-4n').style.transformOrigin="50% 100%";
-		 // document.getElementById('3-4n').style.animation="swing 50s forwards";
-		  degrees=0;
-		  rotateAnimation("3-4n",75);    //Rotate clock needle
-		 if(repeat==1)
-		 {
-		setTimeout(function(){
-		 myInt = setInterval(function(){ animatearrow(); }, 500);
-		     document.getElementById('arrow1').style="visibility:visible ;position:absolute; left:452px; top:197px; height: 20px; z-index: 10;";
-		     document.getElementById("arrow1").style.WebkitTransform = "rotate(270deg)"; 
-		     // Code for IE9
-		     document.getElementById("arrow1").style.msTransform = "rotate(270deg)"; 
-		     // Standard syntax
-		     document.getElementById("arrow1").style.transform = "rotate(270deg)";
-	         document.getElementById('3-3').onclick=function(){step32();}
-		 },6800);
-		 }
-		 if(repeat==2)
-		 {
-		setTimeout(function(){
-		 myInt = setInterval(function(){ animatearrow(); }, 500);
-		     document.getElementById('arrow1').style="visibility:visible ;position:absolute; left:452px; top:197px; height: 20px; z-index: 10;";
-		     document.getElementById("arrow1").style.WebkitTransform = "rotate(270deg)"; 
-		     // Code for IE9
-		     document.getElementById("arrow1").style.msTransform = "rotate(270deg)"; 
-		     // Standard syntax
-		     document.getElementById("arrow1").style.transform = "rotate(270deg)";
-	         document.getElementById('3-3').onclick=function(){step32();}
-		 },3400);
-		 }
-	 }
+	{
+		myStopFunction();
+		document.getElementById('3-3un').style.visibility="hidden";
+        document.getElementById('3-3').style.visibility="visible";
+        document.getElementById('3-4c').style.visibility="visible";
+        document.getElementById('3-4n').style.visibility="visible";
+		document.getElementById('3-4n').style.transformOrigin="50% 100%";
+		// document.getElementById('3-4n').style.animation="swing 50s forwards";
+		degrees=0;
+		rotateAnimation("3-4n",75);    //Rotate clock needle
+		if(repeat==1)
+		{
+			setTimeout(function()
+			{
+				myInt = setInterval(function(){ animatearrow(); }, 500);
+				document.getElementById('arrow1').style="visibility:visible ;position:absolute; left:452px; top:197px; height: 20px; z-index: 10;";
+				document.getElementById("arrow1").style.WebkitTransform = "rotate(270deg)"; 
+				// Code for IE9
+				document.getElementById("arrow1").style.msTransform = "rotate(270deg)"; 
+				// Standard syntax
+				document.getElementById("arrow1").style.transform = "rotate(270deg)";
+				document.getElementById('3-3').onclick=function(){step32();}
+		    },6800);
+		}
+		if(repeat==2)
+		{
+			setTimeout(function()
+			{
+				myInt = setInterval(function(){ animatearrow(); }, 500);
+				document.getElementById('arrow1').style="visibility:visible ;position:absolute; left:452px; top:197px; height: 20px; z-index: 10;";
+				document.getElementById("arrow1").style.WebkitTransform = "rotate(270deg)"; 
+				// Code for IE9
+				document.getElementById("arrow1").style.msTransform = "rotate(270deg)"; 
+				// Standard syntax
+				document.getElementById("arrow1").style.transform = "rotate(270deg)";
+				document.getElementById('3-3').onclick=function(){step32();}
+			},3400);
+		}
+	}
 	
 	function step32()
 	{
-		 myStopFunction();
-		 document.getElementById('3-3un').onclick="";
-		 document.getElementById('3-3').onclick="";
-		 document.getElementById('3-3un').style.visibility="visible";
-		 document.getElementById('3-3').style.visibility="hidden";
-		 document.getElementById('3-4c').style.visibility="hidden";
-         document.getElementById('3-4n').style.visibility="hidden";
-		 document.getElementById('nextButton').style.visibility="visible";
+		myStopFunction();
+		document.getElementById('3-3un').onclick="";
+		document.getElementById('3-3').onclick="";
+		document.getElementById('3-3un').style.visibility="visible";
+		document.getElementById('3-3').style.visibility="hidden";
+		document.getElementById('3-4c').style.visibility="hidden";
+        document.getElementById('3-4n').style.visibility="hidden";
+		document.getElementById('nextButton').style.visibility="visible";
 	}
 	
 	function moveKnobonHover()
