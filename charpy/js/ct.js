@@ -363,8 +363,8 @@ function step1()
 	document.getElementById('i1-4').style.visibility="visible";
 	setTimeout(function(){
 		document.getElementById('i1-1').style.transformOrigin="6% 92%";
-		document.getElementById('i1-1').style.mozAnimation= " swing 10s forwards  ";
-		document.getElementById('i1-1').style.webkitAnimation= "swing 10s  forwards ";
+		document.getElementById('i1-1').style.mozAnimation= " swing 6s forwards  ";
+		document.getElementById('i1-1').style.webkitAnimation= "swing 6s  forwards ";
 	},350);
 	setTimeout(function(){
 		document.getElementById('1-2').innerHTML="&nbsp;&nbsp;"+ Ef + ".0";
@@ -373,7 +373,7 @@ function step1()
 	},1000);
 	setTimeout(function(){
 		 document.getElementById('nextButton').style.visibility="visible";
-	},8800);
+	},6200);
 }
 	
 
@@ -577,7 +577,7 @@ function myFun()
 			if(flag==2){
 				document.getElementById('i4-11s').style.visibility="visible";
 			}			
-		},1700);
+		},4200);
 		setTimeout(function(){
 			document.getElementById('d4-4').style.visibility="hidden";
 			document.getElementById('i4-9').style.visibility="hidden";

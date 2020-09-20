@@ -266,45 +266,34 @@ background:#000
 /* CSS to swing hammer */
 @-moz-keyframes swing{
 0%  { transform: rotate(0deg);}
-10% { transform: rotate(185deg);}  
-20% { transform: rotate(60deg);}
-30% {transform: rotate(175deg);}  
-40% {transform: rotate(70deg);}  
-50% { transform: rotate(165deg);}  
-60% { transform: rotate(85deg);}
-70% {transform: rotate(155deg);}  
-80% {transform: rotate(100deg);}
-90% {transform: rotate(140deg);}  
+15% { transform: rotate(175deg);}  
+30% { transform: rotate(70deg);}
+45% {transform: rotate(165deg);}  
+60% {transform: rotate(80deg);}  
+75% { transform: rotate(155deg);}  
+90% { transform: rotate(100deg);}
 100% {transform: rotate(120deg);}  
 }
 
 @-webkit-keyframes swing{
-0%  { transform: rotate(0deg);}
-10% { transform: rotate(185deg);}  
-20% { transform: rotate(60deg);}
-30% {transform: rotate(175deg);}  
-40% {transform: rotate(70deg);}  
-50% { transform: rotate(165deg);}  
-60% { transform: rotate(85deg);}
-70% {transform: rotate(155deg);}  
-80% {transform: rotate(100deg);}
-90% {transform: rotate(140deg);}  
+15% { transform: rotate(175deg);}  
+30% { transform: rotate(70deg);}
+45% {transform: rotate(165deg);}  
+60% {transform: rotate(80deg);}  
+75% { transform: rotate(155deg);}  
+90% { transform: rotate(100deg);}
 100% {transform: rotate(120deg);}  
 }
 
 
 @keyframes swing{
-0%  { transform: rotate(0deg);}
-10% { transform: rotate(185deg);}  
-20% { transform: rotate(60deg);}
-30% {transform: rotate(175deg);}  
-40% {transform: rotate(70deg);}  
-50% { transform: rotate(165deg);}  
-60% { transform: rotate(85deg);}
-70% {transform: rotate(155deg);}  
-80% {transform: rotate(100deg);}
-90% {transform: rotate(140deg);}  
-100% {transform: rotate(120deg);}  
+15% { transform: rotate(175deg);}  
+30% { transform: rotate(70deg);}
+45% {transform: rotate(165deg);}  
+60% {transform: rotate(80deg);}  
+75% { transform: rotate(155deg);}  
+90% { transform: rotate(100deg);}
+100% {transform: rotate(120deg);} 
 }
 
 @-webkit-keyframes specimenFall {
