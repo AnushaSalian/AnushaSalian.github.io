@@ -1,0 +1,485 @@
+/* #tr5-2 */
+/* { */
+	
+/* left:20px; */
+/* top:20px;	 */
+/* border:solid 1px;	 */
+/* } */
+
+html
+{
+	-moz-user-select     : none;
+	-khtml-user-select   : none;
+	-webkit-user-select  : none;
+	-o-user-select       : none;
+	user-select          : none;
+}
+
+
+/* input[type=text]:focus { */
+   
+    /* padding: 10px; */
+    /* margin: 8px 0; */
+    /* display: inline-block; */
+    /* border: 1px solid black; */
+    /* border-radius: 4px; */
+    /* text-align:center; */
+    /* background-color:#D3D3D3 */
+/* } */
+
+#simscreen
+{
+position: relative;
+left:0px;
+top:0px;
+height: 600px; 
+width:800px;
+border:solid 1px;
+font-family:verdana;
+font-size:14px;
+}
+
+#copyright{
+position: absolute;
+left:50px;
+top: 580px;
+font-family: verdana; 
+font-size:12px
+}
+
+#title{
+position:relative;
+left: 0px;
+top: 0px;
+height:40px;
+font-size: 24px;
+text-align:center;
+background-color: black;
+font-family: verdana;
+color: White;
+text-transform: uppercase; 
+}
+
+#title h3{
+padding-top:2px;
+margin:0px;}
+
+
+.stepfont
+{
+	font-family: verdana;
+	font-size: 14px;
+}
+
+
+.simsubscreen
+{
+position:absolute;
+left: 50px;
+top: 50px;
+height:530px;
+width:745px;
+
+}
+
+.incanvas
+{
+margin:5px 0 0 5px;
+padding:0;
+}
+#nextButton{
+    position: absolute;
+    left: 750px;
+    top: 530px;
+cursor:pointer;
+}
+#nextButton1{
+    position: absolute;
+    left: 750px;
+    top: 530px;
+cursor:pointer;
+}
+
+#prevButton{
+    position: absolute;
+    left: 8px;
+    top: 525px;
+cursor:pointer;
+}
+
+
+.steptext
+{
+display:inline;
+font-size:14px;
+font-family: verdana;
+}
+
+.steptext-6
+{
+display:inline;
+font-family: verdana;
+font-size:14px;
+}
+
+.steptext-2
+{
+	display:inline;
+	font-family: verdana;
+	font-size:14px;
+
+}
+
+.circlebg
+{
+border-radius:100%;
+font-size:25px;
+color:#fff;
+text-align:center;
+background:#000
+}
+
+
+/* -------------------------------------- dynamic check button and result ---------------------------------- */
+.inputStyle{
+	border:none;
+	border-bottom: 1px solid;
+	width:55px;
+	font-family:verdana;
+	font-size:14px;
+	text-align:center;
+}
+.resultStyle{
+	border:none;
+	border-bottom-style:double;
+	width:55px;
+	font-family:verdana;
+	font-size:14px;
+	text-align:center;
+	
+}
+
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    background-color: black;
+    color: #fff;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 14px;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 80%;
+    left: 50%;
+    margin-left: -60px;
+  }
+  
+  .tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+  }
+  
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }
+
+  .tooltipObservation {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+    font-family: verdana;
+      font-size:14px;
+  }
+  
+  .tooltipObservation .tooltipObservationText {
+      font-family: verdana;
+      font-size:14px;
+    visibility: hidden;
+    width: 500px;
+    background-color: black;
+    color: #fff;
+    border-radius: 6px;
+    padding: 10px 10px 10px 10px;
+  
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 100;
+  }
+  
+  .tooltipObservation:hover .tooltipObservationText {
+    visibility: visible;
+  }
+  
+  
+  /* <!-- For description --> */
+.popup
+{
+	border-radius:5px;
+	background-color:transparent;
+	color:black;
+	padding:5px;
+}
+
+.ttip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted white;
+}
+
+.ttip .ttiptext
+{ 
+  left : 0px;
+  visibility: hidden;
+  width: 280px;
+  background-color: transparent;
+  color: black;
+  text-align: left;
+  border-radius: 6px;
+  padding: 10px 10px 10px 10px;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 100;
+}
+
+.ttip:hover .ttiptext {
+  visibility: visible;
+}
+
+  
+/* -------------------------------------- water ---------------------------------------- */
+/* Chrome, Safari, Opera */
+@-webkit-keyframes water-1 {
+0% {-webkit-transform: translate(0, 0 );}
+100% {-webkit-transform: translate(0, -1px );}
+}
+
+/* Standard syntax */
+@keyframes water-1 {
+    0% {transform: translate(0, 0);}
+    100% {transform: translate(0, -1px);}
+}
+
+
+/* -------------------------------------- constant speed arrow ---------------------------------------- */
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes arrow-1 {
+0% {-webkit-transform: rotate(0deg);}    
+100% {-webkit-transform: rotate(-50deg);}
+}
+
+/* Standard syntax */
+@keyframes arrow-1 {
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(-50deg);}
+}
+/* -------------------------------------- constant speed arrow 2 ---------------------------------------- */
+/* Chrome, Safari, Opera */
+@-webkit-keyframes arrow-11 {
+0% {-webkit-transform: rotate(0deg);}    
+100% {-webkit-transform: rotate(70deg);}
+}
+
+/* Standard syntax */
+@keyframes arrow-11 {
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(70deg);}
+}
+
+
+
+/* -------------------------------------- ---------------------------------------- */
+/* Chrome, Safari, Opera */
+@-webkit-keyframes valveturn-2 {
+0% {-webkit-transform: rotate(0deg);}    
+100% {-webkit-transform: rotate(-1.25deg);}
+}
+
+/* Standard syntax */
+@keyframes valveturn-2 {
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(-1.25deg);}
+}
+
+/*  Chrome, Safari, Opera move /*image3.1*/ 
+@-webkit-keyframes valveturn-3 {
+0% {-webkit-transform: rotate(0deg);}    
+100% {-webkit-transform: rotate(-2.25deg);}
+}
+
+/* Standard syntax */
+@keyframes valveturn-3 {
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(-2.25deg);}
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes valveturn-4 {
+0% {-webkit-transform: rotate(0deg);}    
+100% {-webkit-transform: rotate(-20deg);}
+}
+
+/* Standard syntax */
+@keyframes valveturn-4 {
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(-20deg);}
+}
+
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes valveturn-5 {/*needle rotation*/
+0% {-webkit-transform: rotate(0deg);}    
+100% {-webkit-transform: rotate(360deg);}
+}
+
+/* Standard syntax */
+@keyframes valveturn-5 {
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
+}
+
+/* Standard syntax */
+@keyframes water0 {
+    0% {transform: translate(0, 0);}
+    100% {transform: translate(0, -100px);}
+}
+
+/* Standard syntax */
+@keyframes water0 {
+    0% {transform: translate(0, 0);}
+    100% {transform: translate(0, -100px);}
+}
+
+/* Standard syntax */
+@keyframes water-2 {
+    0% {transform: translate(0, 0);}
+    100% {transform: translate(0, -4px);}
+}
+
+/* Standard syntax */
+@keyframes water-2 {
+    0% {transform: translate(0, 0);}
+    100% {transform: translate(0, -4px);}
+}
+/*-----------------------------------------hook gauge----------------------- */
+/* Chrome, Safari, Opera */
+@-webkit-keyframes myhook-1 {
+0% {-webkit-transform: translate(0, 0 );}
+50% {-webkit-transform: translate(0, -15px );}
+
+100% {-webkit-transform: translate(0, 8px );}
+}
+
+/* Standard syntax */
+@keyframes myhook-1 {
+    0% {transform: translate(0, 0);}
+	50% {transform: translate(0, -15px);}
+	
+	
+    100% {transform: translate(0, 8px);}
+}
+
+@-webkit-keyframes myhook-2 {
+0% {-webkit-transform: translate(0, 0 );}
+50% {-webkit-transform: translate(0, -50px );}
+
+100% {-webkit-transform: translate(0, -15px );}
+}
+
+/* Standard syntax */
+@keyframes myhook-2 {
+    0% {transform: translate(0, 0px);}
+	50% {transform: translate(0, -50px);}
+	
+	
+    100% {transform: translate(0, -15px);}
+}
+
+
+/*-----------------------------------------bubble movement----------------------- */
+
+
+@-webkit-keyframes mymove1 {
+    from {left:40px; top: 120.50px;}
+    to {left:57px; top: 120.50px;}
+}
+
+/* Standard syntax */
+@-webkit-keyframes mymove1 {
+    from {left:40px; top: 120.50px;}
+    to {left:57px; top: 120.50px;}
+}
+
+@-webkit-keyframes mymove1-1 {  /* canvas 4  bubble movement*/
+    from {left:97.20px; top: 131px;}
+    to {left:105px; top: 131px;}
+}
+
+/* Standard syntax */
+@-webkit-keyframes mymove1-1 {
+    from {left:97.20px; top: 131px;}
+    to {left:105px; top: 131px;}
+}
+
+@-webkit-keyframes mymove1-2 {  /* canvas 5  bubble movement*/
+    from {left:400px; top: 120.50px;}
+    to {left:398px; top: 120.50px;}
+}
+
+/* Standard syntax */
+@-webkit-keyframes mymove1-2 {
+    from {left:400px; top: 120.50px;}
+    to {left:398px; top: 120.50px;}
+}
+
+@-webkit-keyframes mymove1-3 {  /* canvas 5  bubble movement after clicking on 2.2.png*/
+    from {left:398px; top: 120.50px;}
+    to {left:388.20px; top: 120.50px;}
+}
+
+/* Standard syntax */
+@-webkit-keyframes mymove1-3 {
+    from {left:398px; top: 120.50px;}
+    to {left:388.20px; top: 120.50px;}
+}
+
+
+/*-----------------------------------------hand2 movement----------------------- */
+@-webkit-keyframes mymove2 {
+    from {left:516px; top: 372px;}
+    to {left:57px; top: 375px;}
+}
+
+/* Standard syntax */
+@-webkit-keyframes mymove2 {
+    from {left:516px; top: 372px;}
+    to {left:57px; top: 375px;}
+}
+
+#can1-1:hover
+{
+	background-color:#eafdfe;
+}
+#can1-2:hover
+{
+	background-color:#eafdfe;
+}
+#can1-3:hover
+{
+	background-color:#eafdfe;
+}

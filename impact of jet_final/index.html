@@ -2,82 +2,65 @@
 <html lang="en-US">
 <head>
 <meta charset="UTF-8">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 <title>SOLVE</title>
-<link rel="stylesheet" href="sgca.css" />
-<link href="mathstyle.css" rel="stylesheet" />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script> 
-<script type="text/javascript" src= "jquery-1.7.1.min.js"></script>
-<script type="text/javascript" src= "sgca.js"></script>
-<script type="text/javascript" src= "jquery-2.1.4.js"></script>
-<script type="text/javascript" src= "ej.web.all.js"></script>
+<link rel="stylesheet" href="css/sgca.css" />
+<link rel="stylesheet" href="../../../css/mathstyle.css"/>
+<script type="text/javascript" src="../../../js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="../../../js/jquery-2.1.4.js"></script>
+<script type="text/javascript" src="../../../js/ej.web.all.js"></script>
+<script type="text/javascript" src="js/sgca.js"></script>
 
 <script>
 var simsubscreennum=0;
-<!-- var flat=[25,50,75];			 -->
-<!-- var hemi=[50,100,150]; -->
-<!-- var inclined=[10,15,20]; -->
-
-var hemi=[[50,100,150],
-          [41,32,26],
-		  [439.02,562.5,692.31],
-		  [3.58,4.58,5.64],
-		  [3.143,5.159,7.815],
-		  [2.289,4.578,3.867],
-		  [0.728,0.887,0.879]];
 		  
-var flat=[[25,50,75],
-          [43,31,25],
-		  [418.6,580.65,720],
-		  [3.41,4.73,5.87],
-		  [1.429,2.479,4.226],
-		  [1.145,2.289,3.434],
-		  [0.801,0.833,0.812]];			
+var flat=[[25,50,75,100],
+          [43.8,33.4,25.2,23],
+		  [410.96,538.92,714.29,782.61],
+		  [331.71,435,576.55,631.7],
+		  [1.36,2.34,4.12,4.94],//Theoretical force, Fth (N) (x-axis)
+		  [1.1445,2.289,3.4335,4.578],//Actual force, Fact =((b/a)*Weight) (N) (y-axis)
+		  [0.84,0.98,0.83,0.93]];		
 
-var inclined=[[10,15,20],
-              [61,50,43],
-			  [295.08,360,418.60],
-			  [2.41,2.93,3.41],
-			  [1.689,2.514,3.399],
-			  [0.458,0.687,0.916],
-			  [0.271,0.273,0.269]];
+var hemi=[[50,100,150,200], //Weight Applied(g)
+          [43,33.5,27,23], //Time, t in (sec)
+		  [418.6,537.31,666.67,782.61], //Discharge, (cm3/sec) Qact( ((A*H)/t)
+		  [337.88,433.7,538.11,631.7], //Velocity, V=Qact/a in (Cm/sec)
+		  [2.83,4.66,7.17,9.89],//Theoretical force, Fth (N)
+		  [2.289,4.578,6.867,9.156],//Fact =((b/a)*Weight) (N)
+		  [0.81,0.98,0.96,0.93]];//Coefficient of impact		  
+
+var inclined=[[5,10,15,20],
+              [60,50,38,34.5],
+			  [242.15,290.58,382.34,421.13],
+			  [242.15,290.58,382.34,421.13],
+			  [0.54,0.78,1.36,1.65],//Theoretical force, Fth (N)
+			  [0.2289,0.4578,0.6867,0.9156],
+			  [0.42,0.59,0.5,0.55]];
 
 </script>
 </head>
-
-
-
 <body style="margin:0; font-family:verdana; " >
-<!--Simulation Screen start		-->
+
 <div id="simscreen">
 
-<!--Title of Simulation		-->
 <div id="title"><h3>IMPACT OF JET ON VANES</h3></div>
 
-<!--SubScreen Home	-->	
 <div class="simsubscreen" id="canvas0">
-<h4 class="incanvas" style="font-family:verdana;" >Objective</h4>
+<h4 class="incanvas" style="font-family:verdana;" >Objective:</h4>
 <p class="incanvas" style="font-family:verdana; font-size:14px;">To determine the coefficient of impact of jet on the vanes.</p>
 <h4 class="incanvas" style="font-family:verdana;">Apparatus used:</h4>
 <p class="incanvas" style="font-family:verdana; font-size:14px;" >Impact of jet on vanes set up with nozzle, vane holder, different types of vanes, weight balance with </p>
 <p class="incanvas" style="font-family:verdana; font-size:14px;" >weights, scale etc.</p>
-<img id="" style="position: absolute; left: 120px; top: 140px;" src="images/1.png"/>
+<img id="" style="position: absolute; left: 120px; top: 150px; width:50%;" src="images/14.1.png"/>
 </div>
-
-
-
-
-<!--Step1	-->	
+	
 <div class="simsubscreen" id="canvas1" style="visibility:hidden">
 <strong id="titlestep" class="incanvas">STEP </strong>
 <span class="circlebg" id="stepnumber">&nbsp;1&nbsp;</span>
 
-<p id="pumptext" class="steptext" style="font-f3amily:verdana; font-size:14px;">Choose the type of vane</p>
-<!-- <form id="vane" style="position: absolute; left: 100px; top: 115px;  font-family:verdana; font-size:14px;"> -->
-  <!-- <input type="radio" id="f" name="subject" value="river" > Flat vane <br><br><br><br><br><br> -->
-  <!-- <input type="radio" id="h" name="subject" value="river" > Hemi spherical vane <br><br><br><br><br><br><br> -->
-  <!-- <input type="radio" id="i" name="subject" value="beach"> Inclined vane -->
-<!-- </form> -->
+<p id="pumptext" class="steptext" style="font-family:verdana; font-size:14px;">Choose the type of vane</p>
+
 <img id="can1-1" style="position: absolute; left: 25px; top: 115px; cursor:pointer;" src="images/flat.png"/>
 <p id="vane1" style="font-family:verdana; font-size:14px; position: absolute; left: 25px; top: 200px;" >Flat vane</p>
 
@@ -88,10 +71,8 @@ var inclined=[[10,15,20],
 <p id="vane3" style="font-family:verdana; font-size:14px; position: absolute; left: 470px; top: 200px; cursor:pointer;" >Inclined vane </p>
 
 <p id="vane4" style="font-family:verdana; font-size:14px; position: absolute; left: 25px; top: 275px; cursor:pointer;" ></p>
-
 </div>
 
-<!--step2-->
 <div class="simsubscreen" id="canvas2" style="visibility:hidden">
 <strong id="titlestep" class="incanvas">STEP </strong>
 <span class="circlebg" id="stepnumber">&nbsp;2&nbsp;</span>
@@ -107,15 +88,10 @@ var inclined=[[10,15,20],
 <img id="can2-4" style="position: absolute; left:525px; top: 107px; cursor:pointer; visibility:hidden;" src="images/hand.png"/>
 <img id="can2-5" style="position: absolute; left:25px; top: 115px; cursor:pointer; visibility:hidden;" src="images/3.png"/>
 <img id="can2-6" style="position: absolute; left:40px; top: 120.50px; cursor:pointer; visibility:hidden;" src="images/3.1.png"/>
-<!-- <img id="can2-7" style="position: absolute; left:190px; top: 115px; cursor:zoom-in; " src="images/2.3.png"/> -->
 <img id="can2-7" style="position: absolute; left:190px; top: 103px; cursor:zoom-in; visibility:hidden; " src="images/3a.png"/>
-
 <p id="v2-1" style="position:absolute; top: 150px; left:50px; font-family:verdana; font-size:16px; visibility:hidden;">Click on arrow to proceed</p>
-
 </div>
 
-
-<!--Step3	-->	
 <div class="simsubscreen" id="canvas3" style="visibility:hidden"> 
 <strong id="titlestep" class="incanvas">STEP &nbsp;</strong> 
 <span class="circlebg" id="stepnumber">&nbsp;3&nbsp;</span>
@@ -138,8 +114,6 @@ var inclined=[[10,15,20],
 <p id="v3-2" style="position:absolute; left: 470px; top:250px; visibility:hidden; font-family:verdana; font-size:14px;">b = 63cm </p>
 </div>
 
- 
-<!--Step4	-->	
 <div class="simsubscreen" id="canvas4" style="visibility:hidden">
 <strong class="incanvas">STEP &nbsp;</strong><span class="circlebg">&nbsp;4&nbsp;</span>
 <p class="steptext" style="font-family:verdana; font-size:14px;">&nbsp;Put weight on the pan.</p>
@@ -153,15 +127,11 @@ var inclined=[[10,15,20],
 <img id="can4-4" style="position: absolute; left:149.25px; top: 120px; visibility:hidden; " src="images/5.png"/>
 <img id="can4-3" style="position: absolute; left:212.50px; top: 120.55px; visibility:hidden;" src="images/2.2.png"/>
 
-<!-- <img id="can4-6" style="position: absolute; left:460px; top: 143px; visibility:hidden;" src="images/4.12.png"/> -->
-
- <img id="can4-5" style="position: absolute; left:21px; top: 123.25px; visibility:hidden; cursor:zoom-in;" src="images/4.1.png"/> 
+<img id="can4-5" style="position: absolute; left:21px; top: 123.25px; visibility:hidden; cursor:zoom-in;" src="images/4.1.png"/> 
 
 <img id="can4-7" style="position: absolute; left:21px; top: 125.20px; visibility:hidden; " src="images/4.12b.png"/>
 <img id="can4-8" style="position: absolute; left:97.20px; top: 131px; visibility:hidden;" src="images/3.1.png"/>
 
-<!-- <img id="can4-7" style="position: absolute; left:475px; top: 115px; visibility:hidden;" src="images/3.png"/> -->
-<!-- <img id="can4-8" style="position: absolute; left:507px; top: 120.50px; visibility:hidden;" src="images/3.1.png"/> -->
 <img id="can4-9" style="position: absolute; left:505px; top: 400px; visibility:hidden;" src="images/wight.png"/>
 <img id="can4-10" style="position: absolute; left:545px; top: 408.5px; visibility:hidden;" src="images/25.png"/>
 <img id="can4-11" style="position: absolute; left:545px; top: 408.5px; visibility:hidden;" src="images/50.png"/>
@@ -170,13 +140,9 @@ var inclined=[[10,15,20],
 <img id="can4-13" style="position: absolute; left:514px; top: 390px; visibility:hidden;" src="images/hand2.png"/>
 
 <img id="can4-10a" style="position: absolute; left:75px; top: 425.50px; visibility:hidden;" src="images/25.png"/>
-<!-- <p id="v4-1" style="position:absolute; left: 400px; top:150px; visibility:hidden; font-family:verdana; font-size:16px;"></p> -->
-
 <p id="v4-1" style="position: absolute; visibility:hidden; left: 410px; top:150px; font-family:verdana; font-size:16px;"></p>
 </div>
 
-
-<!--Step5	-->	
 <div class="simsubscreen" id="canvas5" style="visibility:hidden;">
 <strong class="incanvas">STEP &nbsp;</strong><span class="circlebg">&nbsp;5&nbsp;</span>
 <p class="steptext" style="font-family:verdana; font-size:14px;" >&nbsp;Open the inlet valve and bring the bubble to centre in spirit level using the counter balance.</p>
@@ -201,7 +167,6 @@ var inclined=[[10,15,20],
 <img id="can5-6" style="position: absolute; left: 550px; top: 230px; visibility:hidden;" src="images/pipe.png">
 <img id="can5-7" style="position: absolute; left: 545px; top: 267px; visibility:hidden; cursor:pointer;" src="images/hand3.png">
 
-
 <img id="can5-8wf" style="position: absolute; left: 156px; top: 186.5px;  visibility:hidden;" src="images/watflat.png">
 
 <img id="can5-8wi" style="position: absolute; left: 156px; top: 182px; visibility:hidden;" src="images/watincli.png">
@@ -212,12 +177,8 @@ var inclined=[[10,15,20],
 <img id="can5-10b" style="position: absolute; left:400px; top: 120.50px; cursor:pointer; visibility:hidden;" src="images/3.1.png"/>
 
 <img id="can5-12" style="position: absolute; left:500px; top: 120.50px; cursor:pointer; visibility:hidden;" src="images/hand.png"/>
-
-
-
 </div>
 
-<!--Step6	-->	
 <div class="simsubscreen" id="canvas6" style="visibility:hidden;">
 <strong class="incanvas">STEP &nbsp;</strong><span class="circlebg">&nbsp;6&nbsp;</span>
 <p class="steptext" style="font-family:verdana; font-size:14px;" >&nbsp;Close outlet valve and find discharge by noting the time taken by water to fill certain height in the collecting.</p>
@@ -248,23 +209,17 @@ var inclined=[[10,15,20],
 <img id="can6-7" style="position: absolute; left: 499px; top: 140px;" src="images/stopwatch.png"/>
 <img id="can6-8" style="position: absolute; left: 567px; top: 211px;" src="images/needle.png"/>
 
-
 <img id="can6-9" style="position: absolute; left: 192.10px; top: 272.99px; " src="images/waterpipe.png">
 
-<p id="v6-1" style="position:absolute; top: 390px; left:390px"> Time taken by water to fill 5cm height, t =</p>
+<p id="v6-1" style="position:absolute; top: 390px; left:387px;"> Time taken by water to fill 5cm height, t=</p>
 
-
-<div class="tooltip" style="position:absolute; top:420px; left:390px; visibility:hidden;">
+<div class="tooltip" style="position:absolute; top:420px; left:387px; visibility:hidden;">
 	<p id="v6-2">Discharge of water, Q = </p>
 	<span id="fcan4-11" class="tooltiptext" ><span>Q (cm<sup>3</sup>/sec) = <span class="frac"><sup>A &times; h</sup><span>&frasl;</span><sub>t</sub></span><br>Where, A = 3600cm<sup>2</sup></span></span>
 </div> 
-
 </div>
-
-
-<!--Step7	-->	
+	
 <div class="simsubscreen" id="canvas7" style="visibility:hidden;">
-
 <span id="ap1" class="ttip" style="border-bottom:1px dotted ; color:red; position:absolute; left:430px; top: 70px; text-align:justify;"><strong>Observations</strong>
 <span  class="ttiptext" style="text-align:-webkit-justify;">
 </br>
@@ -272,8 +227,8 @@ var inclined=[[10,15,20],
 <p>Breadth of channel = 60cm</p>
 <p>Area of collecting tank = 3600cm<sup>2</sup></p><!-- 60 x 40 -->
 
-<p>Diameter of nozzle, d = 1.25 cm</p>
-<span class="tooltip">Area of the nozzle, A = 1.2266cm<sup>2</sup>
+<p>Diameter of nozzle, d = 1.256cm</p>
+<span class="tooltip">Area of the nozzle, A = 1.2389cm<sup>2</sup>
 	<span id="fcan4-11" class="tooltiptext" ><span>A = <span class="frac"><sup>&pi; &times; d<sup>2</sup></sup><span>&frasl;</span><sub>4</sub></span> </span></span>
 </span>
 
@@ -291,7 +246,7 @@ var inclined=[[10,15,20],
 <h3 style="position:absolute; left: 0px; top:50px;">Calculation:</h3>
 <p id="v7-4f" style="position:absolute; top: 100px; left:15px; visibility:hidden; border-bottom-style:double;"> For Flat vane: </p>
 <p id="v7-4h" style="position:absolute; top: 100px; left:15px; visibility:hidden; border-bottom-style:double;"> For curved vane (hemispherical): </p>
-<p id="v7-4i" style="position:absolute; top: 100px; left:15px;; visibility:hidden; border-bottom-style:double;"> For inclined vane (&theta; =60&deg; with the horizontal):</p>
+<p id="v7-4i" style="position:absolute; top: 100px; left:15px;; visibility:hidden; border-bottom-style:double;"> For inclined vane (&theta; = 30&deg; with the horizontal):</p>
 
 <div id="vp7-5" style="position:absolute; left:15px; top: 150px;">
 	<p>Velocity of jet, V = <span class="frac"><sup title="Discharge of water">Q</sup><span>&frasl;</span><sub title="Area of the nozzle">A</sub></span> = <span id="v7-5"></span></p>
@@ -311,9 +266,6 @@ var inclined=[[10,15,20],
 
 </div>
 
-
-<!--Step8	-->	
-
 <div class="simsubscreen" id="canvas8" style="visibility:hidden">
 <center><h2 id="step8" style="font-family:verdana;">Characteristic Curves<h2></center></p>
 <center><span id="step8text1" style="border: 2px solid; position:absolute;top: 60px; left:220px;cursor:pointer;font-family:verdana; font-size:14px;">
@@ -321,26 +273,20 @@ Theoretical force (F<sub>th</sub>) vs Actual force (F<sub>act</sub>) </span></ce
 <div id="chartContainer" style="height: 420px; width: 600px;margin-left:25px;margin-right:100px;margin-top:50px"></div>
 </div>
 
-
 <div id="">	
 <p id="trial" style="text-transform: uppercase;visibility :hidden; font-weight: bold;"><strong>Trial = </strong></p>
 </div>
-
 	
-<!--next  Arrow	-->	
 <div id="nav">
 	<img id="nextButton" onclick="navNext(); " src="images/Next.png" />
 </div>
 
-<!--Previous  Arrow	-->	
 <div id="nav">
 	<img id="prevButton" style="visibility:hidden;" onclick="navPrev(); " src="images/Previous.png" />
 </div>
 
-
-<!--Blinking Arrow	-->	
 <img class ="" id="arrow1" style="visibility:hidden;" src="images/arrow1.png"/>
 
-<div id="copyright"> &copy; 2016 - 2020 SOLVE - The Virtual Lab @ NITK Surathkal, Department of Applied Mechanics & Hydraulics</div>
+<div id="copyright"> &copy; 2016 - <script>document.write(new Date().getFullYear())</script> SOLVE - The Virtual Lab @ NITK Surathkal, Department of Water Resources & Ocean Engineering</div>
 </body>
 </html>
