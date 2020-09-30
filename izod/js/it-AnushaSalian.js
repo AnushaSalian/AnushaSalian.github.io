@@ -256,6 +256,7 @@ function magic()
 		 document.getElementById('i4-4').style.visibility="hidden";
 		 document.getElementById('i4-54').style.visibility="hidden";
 		 document.getElementById('i4-7').style.visibility="hidden";
+		 document.getElementById('i4-7ms').style.visibility="hidden";
 		 document.getElementById('i4-1').style.visibility="hidden";
 		 if(flag==1)
 		 {   
@@ -477,7 +478,16 @@ function step4()
 	setTimeout(function(){
 	document.getElementById('i4-10').style.visibility="hidden";
 		 document.getElementById('i4-sp1').style.visibility="hidden";
-		 document.getElementById('i4-sp2').style.visibility="visible";
+		 if(flag==1)
+		 {
+			document.getElementById('i4-sp2').style.visibility="visible";
+			document.getElementById('i4-7').style.visibility="visible";
+		 }
+		 if(flag==2)
+		 {
+			document.getElementById('i4-sp2ms').style.visibility="visible";
+			document.getElementById('i4-7ms').style.visibility="visible";
+		 }
 	},800);
 	setTimeout(function(){
 		if(flag==1)
@@ -493,7 +503,6 @@ function step4()
 	},800);
 	setTimeout(function(){
 		document.getElementById('i4-6').style.visibility="hidden";
-		document.getElementById('i4-7').style.visibility="visible";
 	},800);
 	setTimeout(function(){
 		document.getElementById('i4-54').style.visibility="visible";
@@ -503,6 +512,7 @@ function step4()
 	setTimeout(function(){
 		document.getElementById('nextButton').style.visibility="visible";
 		document.getElementById('i4-sp2').style.visibility="hidden";
+		document.getElementById('i4-sp2ms').style.visibility="hidden";
 	},8750);
 }
 	
