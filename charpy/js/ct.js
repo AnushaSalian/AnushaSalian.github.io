@@ -1,5 +1,5 @@
 //on click of next button
-var flag=2; var repeat=0; var a; var firsttime=false; var i=0;
+var flag=0; var repeat=0; var a; var firsttime=false; var i=0;
 var Et=[34,45,47.5,48,41,43,40];
 // var EEt = Et[Math.floor(Math.random() * Et.length)];
 var EEt = 0; var run_once=true; var a=0;
@@ -257,8 +257,9 @@ function magic()
 		document.getElementById('4-4').style.visibility="visible";
 		document.getElementById('d4-4').style.visibility="visible";
 		setTimeout(function(){
-		document.getElementById('i4-8').style.visibility="visible";
-		document.getElementById('i4-9').style.visibility="visible";
+			document.getElementById('i4-8').style.visibility="visible";
+			document.getElementById('i4-9').style.visibility="visible";
+			document.getElementById('4-5').style.visibility="visible";
 		},500);
 		 setTimeout(function(){
 					// document.getElementById('i4-2').style.visibility="hidden";
@@ -566,7 +567,10 @@ function myFun()
 		setTimeout(function(){
 			 document.getElementById('i4-10').style.visibility="visible";
 			 document.getElementById('i4-10').style.transformOrigin="0 20%";
-		     document.getElementById('i4-10').style.animation="mymove2 1 1.5s forwards";
+		     document.getElementById('i4-10').style.animation="mymove2 1.0s linear";
+			 setTimeout(function(){
+				 document.getElementById('i4-10').style.visibility="hidden";
+			 },1000);
 		},500);
 		setTimeout(function(){
 			document.getElementById('i4-8').style.visibility="hidden";
@@ -581,6 +585,7 @@ function myFun()
 		setTimeout(function(){
 			document.getElementById('d4-4').style.visibility="hidden";
 			document.getElementById('i4-9').style.visibility="hidden";
+			document.getElementById('4-5').style.visibility="hidden";
 			// document.getElementById('i4-11i').style.visibility="visible";
 			if(flag==1){
 				document.getElementById('i4-11is').style.visibility="visible";
@@ -603,15 +608,10 @@ function myFun()
 				document.getElementById('i4-11i2').style.visibility="hidden";
 				document.getElementById('i4-11s2').style.visibility="hidden";
 			},500);
-		},850);
+		},850);  	
 		setTimeout(function(){
-			 document.getElementById('i4-10').style.visibility="hidden";
-		},950);
-       	
-		 setTimeout(function(){
 			 document.getElementById('nextButton').style.visibility="visible";
-			 },8700);
-		 /*},8750);*/
+		},8700);
 	 }
 	
 function refresh()
