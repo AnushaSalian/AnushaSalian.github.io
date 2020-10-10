@@ -1,7 +1,3 @@
-/* #tab{ 
-     padding: 10px; 
-     margin: 8px 0; 
-}	 */
 html
 {
     -moz-user-select     : none;
@@ -33,7 +29,7 @@ border:solid 1px;
 
 #copyright{
 position: absolute;
-left:50px;
+left:45px;
 top: 580px;
 font-family: verdana; 
 font-size:12px
@@ -63,11 +59,10 @@ margin:0px;}
 	font-size: 14px;
 }
 
-
 .simsubscreen
 {
 position:absolute;
-left: 50px;
+left: 40px;
 top: 50px;
 height:530px;
 width:745px;
@@ -421,23 +416,23 @@ background:#000
 
 /* // */
 @-webkit-keyframes moveHand1{
-	from {left:551.5px; top:120px;}
-	to {left:575.47px; top:120px;}
+	from {left:551.5px; top:119.5px;}
+	to {left:565.5px; top:119.5px;}
 }
 
 @keyframes moveHand1{
-    from {left:551.5px; top:120px;}
-	to {left:575.47px; top:120px;}
+    from {left:551.5px; top:119.5px;}
+	to {left:565.5px; top:119.5px;}
 }
 
 @-webkit-keyframes moveHand2{
-	from {left:551.5px; top:120px;}
-	to {left:587px; top:120px;}
+	from {left:551.5px; top:119.5px;}
+	to {left:578px; top:119.5px;}
 }
 
 @keyframes moveHand2{
-    from {left:551.5px; top:120px;}
-	to {left:587px; top:120px;}
+    from {left:551.5px; top:119.5px;}
+	to {left:578px; top:119.5px;}
 }
 
 @-moz-keyframes rot1{
@@ -475,10 +470,6 @@ background:#000
     transition: all 0.5s ease-in-out;
 }
 
-
-
-
-
 @-moz-keyframes rotNeedle{
 0%  { transform: rotate(100deg);}
 100% { transform: rotate(0deg);}
@@ -486,4 +477,15 @@ background:#000
 @keyframes rotNeedle{
 0%  { transform: rotate(100deg);}
 100% { transform: rotate(0deg);}
+}
+
+@-webkit-keyframes moveWheel {
+0% {-webkit-transform: translate(0, 0 );}
+100% {-webkit-transform: translate(8px, 0 );}
+}
+
+/* Standard syntax */
+@keyframes moveWheel {
+    0% {transform: translate(0, 0);}
+    100% {transform: translate(8px, 0);}
 }
