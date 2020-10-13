@@ -1,5 +1,5 @@
-//on click of next button
-var flag=0; var repeat=0; var a; var firsttime=false; var i=0;
+//flag==1 => Cast Iron and flag==2 => Mild Steel
+var flag=0; var repeat=0; var firsttime=false; var i=0;
 var Et=[34,45,47.5,48,41,43,40];
 // var EEt = Et[Math.floor(Math.random() * Et.length)];
 var EEt = 0; var run_once=true; var a=0;
@@ -9,18 +9,32 @@ var p=Math.floor(Math.random()*(9));
 
 var val1=0; var vla2=0;
 
-MildSteel=[[57.9,9.2,9.4,5,300,1,34,33],
-           [58.87,9.3,9.5,5,300,1,44.5,43.5],
+var indefinite=false;
+var array1=[0,2,3,5,6,8,9];
+var array2=[1,4,7]; //indefinite dataset from MildSteel array
+// MildSteel=[[57.9,9.2,9.4,5,300,1,34,33],
+           // [58.87,9.3,9.5,5,300,1,44.5,43.5],
+           // [58.87,9.3,9.5,5,300,1,45,44],
+           // [57.46,9.22,9.42,5,300,1,47.5,46.5],
+           // [57.46,9.22,9.42,5,300,1,46.5,45.5],
+           // [57.6,9.4,9.3,5,300,1,48,47],
+           // [59.56,9.4,9.42,5,300,1,41,40],
+           // [58.44,9.62,9.5,5.66,300,1,43,42],
+           // [58.44,9.62,9.5,5.66,300,1,43,42],
+           // [59.56,9.6,9.3,5,300,1,40,39]];
+
+var MildSteel=[[57.9,9.2,9.4,5,300,1,34,33],
+           [58.87,9.3,9.5,5,300,1,"Indefinite","Indefinite"],
            [58.87,9.3,9.5,5,300,1,45,44],
            [57.46,9.22,9.42,5,300,1,47.5,46.5],
-           [57.46,9.22,9.42,5,300,1,46.5,45.5],
+           [57.46,9.22,9.42,5,300,1,"Indefinite","Indefinite"],
            [57.6,9.4,9.3,5,300,1,48,47],
            [59.56,9.4,9.42,5,300,1,41,40],
-           [58.44,9.62,9.5,5.66,300,1,43,42],
+           [58.44,9.62,9.5,5.66,300,1,"Indefinite","Indefinite"],
            [58.44,9.62,9.5,5.66,300,1,43,42],
            [59.56,9.6,9.3,5,300,1,40,39]];
 
-CastIron=[[57,9.5,9.52,6.1,300,1,19,18],
+var CastIron=[[57,9.5,9.52,6.1,300,1,19,18],
 		  [58.87,9.3,9.5,5,300,1,20,19],
 		  [58.6,9.3,9.32,4.5,300,1,32,31],
 		  [57.32,9.62,9.82,5.3,300,1,30,29],
@@ -79,6 +93,44 @@ function myStopFunction()
     document.getElementById('arrow1').style.visibility="hidden";
 }
 
+function flag1(){
+	flag=1;
+	document.getElementById('can3-4').style.color="#FC0D05";
+	document.getElementById('can3-1').style.visibility="visible";
+	document.getElementById('can3-2').style.visibility="visible";
+  
+	document.getElementById('can3-5').style.visibility="hidden";
+	document.getElementById('can3i-2').style.visibility="hidden";
+  
+	document.getElementById('tabci1').style.visibility="visible";
+	document.getElementById('ci-l').innerHTML=CastIron[p][0];
+	document.getElementById('ci-b').innerHTML=CastIron[p][1];
+	document.getElementById('ci-d').innerHTML=CastIron[p][2];
+	document.getElementById('ci-dn').innerHTML=CastIron[p][3];
+	setTimeout(function(){
+		document.getElementById('nextButton').style.visibility="visible";  
+	},200);
+}
+
+function flag2(){
+	flag=2;
+	document.getElementById('can3-5').style.color="#FC0D05";
+	document.getElementById('can3-1').style.visibility="visible";
+	document.getElementById('can3-3').style.visibility="visible";
+	 
+	document.getElementById('can3-4').style.visibility="hidden";
+	document.getElementById('can3i-1').style.visibility="hidden";
+						 
+	document.getElementById('tabci1').style.visibility="visible";
+	document.getElementById('ci-l').innerHTML=MildSteel[p][0];
+	document.getElementById('ci-b').innerHTML=MildSteel[p][1];
+	document.getElementById('ci-d').innerHTML=MildSteel[p][2];
+	document.getElementById('ci-dn').innerHTML=MildSteel[p][3];
+	setTimeout(function(){
+		document.getElementById('nextButton').style.visibility="visible";  
+	},200);
+}
+
 function magic()
 {
 	if (simsubscreennum==1)
@@ -109,52 +161,15 @@ function magic()
 		//p=1;
 		if(repeat==0)
 		{
-			document.getElementById('can3i-1').onclick=function(){//iron
-			if(!firsttime)
-			 {
-				  firsttime=true;
-				  document.getElementById('can3-4').style.color="#FC0D05";
-				  flag=1;
-				  document.getElementById('can3-1').style.visibility="visible";
-				  document.getElementById('can3-2').style.visibility="visible";
-				  
-				  document.getElementById('can3-5').style.visibility="hidden";
-				  document.getElementById('can3i-2').style.visibility="hidden";
-				  
-				  document.getElementById('tabci1').style.visibility="visible";
-				  document.getElementById('ci-l').innerHTML=CastIron[p][0];
-				  document.getElementById('ci-b').innerHTML=CastIron[p][1];
-				  document.getElementById('ci-d').innerHTML=CastIron[p][2];
-				  document.getElementById('ci-dn').innerHTML=CastIron[p][3];
-				  setTimeout(function(){
-					 document.getElementById('nextButton').style.visibility="visible";  
-				  },200);
-			 }
-		   }
-		
-			document.getElementById('can3i-2').onclick=function(){//mild steel
-			if(!firsttime)
+			//cast iron
+			document.getElementById('can3i-1').onclick=function()
 			{
-				 firsttime=true;
-				 document.getElementById('can3-5').style.color="#FC0D05";
-				 flag=2;
-				 document.getElementById('can3-1').style.visibility="visible";
-				 document.getElementById('can3-3').style.visibility="visible";
-				 
-				 document.getElementById('can3-4').style.visibility="hidden";
-				 document.getElementById('can3i-1').style.visibility="hidden";
-									 
-				 document.getElementById('tabci1').style.visibility="visible";
-				 document.getElementById('ci-l').innerHTML=MildSteel[p][0];
-				 document.getElementById('ci-b').innerHTML=MildSteel[p][1];
-				 document.getElementById('ci-d').innerHTML=MildSteel[p][2];
-				 document.getElementById('ci-dn').innerHTML=MildSteel[p][3];
-
-				 setTimeout(function(){
-					 //step2();
-					document.getElementById('nextButton').style.visibility="visible";  
-				  },200);
-				}
+				flag1();
+		    }
+			//mild steel
+			document.getElementById('can3i-2').onclick=function()
+			{
+				flag2();
 			}
 		}
 		else if(repeat>=1)
@@ -172,24 +187,85 @@ function magic()
 			document.getElementById('nextButton').style.visibility="visible";  
 		}
         repeat++;
-		if(repeat==1)
-			val1=p;
-		if(repeat==2)
+		if(flag==1)
 		{
-			do
+			if(repeat==1)
+				val1=p;
+			if(repeat==2)
 			{
-				p=Math.floor(Math.random()*(9));
-			}while(p==val1 || p==1);
-			val2=p;	
+				do
+				{
+					p=Math.floor(Math.random()*(9));
+			    }while(p==val1 || p==1);
+				val2=p;	
+			}
+			if(repeat==3)
+			{
+				do
+				{
+					p=Math.floor(Math.random()*(9));
+				}while(p==val1 || p==val2 || p==1);
+			}
 		}
-		if(repeat==3)
+		if(flag==2)
 		{
-			do
+			if(repeat==1){
+				val1=p;
+				//console.log("repeat==1",p, MildSteel[p]);
+				if(p==1 || p==4 || p==7){
+					indefinite=true;
+				}	
+			}
+			if(repeat==2)
 			{
+				val2=p;
 				p=Math.floor(Math.random()*(9));
-			}while(p==val1 || p==val2 || p==1);
+				if((p==1 || p==4 || p==7) && indefinite==true){
+					var z=Math.floor(Math.random()*(6));
+					p=array1[z];
+				}
+				// // if((p==1 || p==4 || p==7) && indefinite==false){
+					 // // var a=Math.floor(Math.random()*(2));
+					 // // p=array2[a];
+					// // indefinite=true;
+				// // }
+				// if(indefinite==true){
+					// var a=Math.floor(Math.random()*(6));
+					// p=array1[a];
+				// }
+				// if(indefinite==false){
+					// var a=Math.floor(Math.random()*(2));
+					// p=array2[a];
+				// }
 				
+				if(p==1 || p==4 || p==7){
+					indefinite=true;
+				}	
+				//console.log("repeat==2",p, MildSteel[p]);
+			}
+			if(repeat==3)
+			{
+				//val2=p;
+				//p=Math.floor(Math.random()*(9));
+				if(indefinite==true){
+					var z=Math.floor(Math.random()*(6));
+					p=array1[z];
+					//console.log("repeat==31",p, MildSteel[p]);
+				}
+				else if(indefinite==false){
+					var z=Math.floor(Math.random()*(2));
+					p=array2[z];
+					//console.log("repeat==32",p, MildSteel[p]);
+				}
+				//p=Math.floor(Math.random()*(9));
+				if(p==1 || p==4 || p==7){
+					indefinite=true;
+				}
+				//console.log("repeat==33",p, MildSteel[p]);
+			}
 		}
+	
+		
 		
 		if(repeat>=1)
 		{
@@ -320,11 +396,36 @@ function magic()
 		 if(flag==2)
 		 {
 			document.getElementById('5-1i').innerHTML="Loss of energy due to friction E<sub>f</sub> = "+MildSteel[p][5]+" J";
-			document.getElementById('5-2i').innerHTML="Total loss of energy during transit of Hammer E<sub>t</sub> = "+MildSteel[p][6]+" J";
-			document.getElementById('5-3i').innerHTML="Energy for failure of specimen = E<sub>t</sub> - E<sub>f</sub> = "+MildSteel[p][7]+" J";
+			if(MildSteel[p][6]=="Indefinite")
+			{
+				document.getElementById('5-2i').innerHTML="Total loss of energy during transit of Hammer E<sub>t</sub> = Indefinite";
+				document.getElementById('5-3i').innerHTML="Energy for failure of specimen = E<sub>t</sub> - E<sub>f</sub> = Indefinite";
+			}
+			else{
+				document.getElementById('5-2i').innerHTML="Total loss of energy during transit of Hammer E<sub>t</sub> = "+MildSteel[p][6]+" J";
+				document.getElementById('5-3i').innerHTML="Energy for failure of specimen = E<sub>t</sub> - E<sub>f</sub> = "+MildSteel[p][7]+" J";
+			}
 		 }
-		 
-		 avg=((c1+c2+c3)/3).toFixed(2);
+		 if(flag==1)
+		 {
+			avg=((c1+c2+c3)/3).toFixed(2);
+		 }
+		 if(flag==2)
+		 {
+			 if(c1=="Indefinite"){
+				c1=0;
+			 }
+			 if(c2=="Indefinite"){
+				c2=0;
+			 }
+			 if(c3=="Indefinite"){
+				c3=0;
+			 }
+			 // if(indefinite==true)
+				avg=((c1+c2+c3)/2).toFixed(2);
+			// if(indefinite==false)
+				// avg=((c1+c2+c3)/3).toFixed(2);
+		 }
 		 if(repeat<3)
 		 {
 			 document.getElementById('nextButton').style.visibility="visible";
@@ -338,20 +439,70 @@ function magic()
              document.getElementById('5-2i').style.visibility="hidden";
              document.getElementById('5-3i').style.visibility="hidden";
 			 document.getElementById('tab').style.visibility="visible";
-			 if(flag==1)
+			 if(flag==1){
 				 document.getElementById('mat').innerHTML="Cast Iron";
-			 if(flag==2)
+				 document.getElementById('12').innerHTML=a1;
+				 document.getElementById('11').innerHTML=b1;
+				 document.getElementById('13').innerHTML=c1;
+				 document.getElementById('22').innerHTML=a2;
+				 document.getElementById('21').innerHTML=b2;
+				 document.getElementById('23').innerHTML=c2;
+				 document.getElementById('32').innerHTML=a3;
+				 document.getElementById('31').innerHTML=b3;
+				 document.getElementById('33').innerHTML=c3;
+			 }
+			 if(flag==2){
 				 document.getElementById('mat').innerHTML="Mild Steel";
-			 document.getElementById('11').innerHTML=a1;
-			 document.getElementById('12').innerHTML=b1;
-			 document.getElementById('13').innerHTML=c1;
-			 document.getElementById('21').innerHTML=a2;
-			 document.getElementById('22').innerHTML=b2;
-			 document.getElementById('23').innerHTML=c2;
-			 document.getElementById('31').innerHTML=a3;
-			 document.getElementById('32').innerHTML=b3;
-			 document.getElementById('33').innerHTML=c3;
-			 document.getElementById('14').innerHTML=avg;
+				 if(c1==0){
+					// console.log("c1==0",c1,b1);
+					 document.getElementById('12').innerHTML=a1;
+					 document.getElementById('11').innerHTML="-";
+					 document.getElementById('13').innerHTML="-";
+					 document.getElementById('22').innerHTML=a2;
+					 document.getElementById('21').innerHTML=b2;
+					 document.getElementById('23').innerHTML=c2;
+					 document.getElementById('32').innerHTML=a3;
+					 document.getElementById('31').innerHTML=b3;
+					 document.getElementById('33').innerHTML=c3;
+				 }
+				 else if(c2==0){
+					 //console.log("c2==0",c2,b2);
+					 document.getElementById('12').innerHTML=a1;
+					 document.getElementById('11').innerHTML=b1;
+					 document.getElementById('13').innerHTML=c1;
+					 document.getElementById('22').innerHTML=a2;
+					 document.getElementById('21').innerHTML="-";
+					 document.getElementById('23').innerHTML="-";
+					 document.getElementById('32').innerHTML=a3;
+					 document.getElementById('31').innerHTML=b3;
+					 document.getElementById('33').innerHTML=c3;
+				 }
+				 else if(c3==0){
+					// console.log("c3==0",c3,b3);
+					 document.getElementById('12').innerHTML=a1;
+					 document.getElementById('11').innerHTML=b1;
+					 document.getElementById('13').innerHTML=c1;
+					 document.getElementById('22').innerHTML=a2;
+					 document.getElementById('21').innerHTML=b2;
+					 document.getElementById('23').innerHTML=c2;
+					 document.getElementById('32').innerHTML=a3;
+					 document.getElementById('31').innerHTML="-";
+					 document.getElementById('33').innerHTML="-";
+				 }
+				 else{
+					// console.log("else",b1,c1,b2,c2,b3,c3);
+					 document.getElementById('12').innerHTML=a1;
+					 document.getElementById('11').innerHTML=b1;
+					 document.getElementById('13').innerHTML=c1;
+					 document.getElementById('22').innerHTML=a2;
+					 document.getElementById('21').innerHTML=b2;
+					 document.getElementById('23').innerHTML=c2;
+					 document.getElementById('32').innerHTML=a3;
+					 document.getElementById('31').innerHTML=b3;
+					 document.getElementById('33').innerHTML=c3;
+				 }
+			 } 
+			 document.getElementById('14').innerHTML=avg; 
 			 },1000);
 		 }
 	}
@@ -544,8 +695,15 @@ function myFun()
 			 }
 			 if(flag==2) 
 			 {
-				 document.getElementById('4-3').innerHTML="&nbsp;" +MildSteel[p][6];
-				 document.getElementById('4-4').innerHTML="&nbsp;" +MildSteel[p][6];
+				if(MildSteel[p][6] == "Indefinite")
+				{
+					 document.getElementById('4-3').innerHTML="000.0";
+					 document.getElementById('4-4').innerHTML="000.0";
+				}
+				else {
+					 document.getElementById('4-3').innerHTML="&nbsp;" +MildSteel[p][6];
+					 document.getElementById('4-4').innerHTML="&nbsp;" +MildSteel[p][6];
+				}
 			 }
 		 },1100);
          setTimeout(function(){
@@ -553,13 +711,21 @@ function myFun()
 			 document.getElementById('4-2').style.visibility="visible";
 			 if(flag==1) 
 			 {
-				document.getElementById('4-1').innerHTML="Total loss of energy during transit of Hammer, E<sub>T</sub> = "+CastIron[p][6]+" J";
-				document.getElementById('4-2').innerHTML="Energy for failure of specimen = E<sub>T</sub> - E<sub>f</sub> = "+CastIron[p][7]+" J";
+				document.getElementById('4-1').innerHTML="Total loss of energy during transit of Hammer, E<sub>t</sub> = "+CastIron[p][6]+" J";
+				document.getElementById('4-2').innerHTML="Energy for failure of specimen = E<sub>t</sub> - E<sub>f</sub> = "+CastIron[p][7]+" J";
 			 }
 			 if(flag==2) 
 			 {
-				document.getElementById('4-1').innerHTML="Total loss of energy during transit of Hammer, E<sub>T</sub> = "+MildSteel[p][6]+" J";
-				document.getElementById('4-2').innerHTML="Energy for failure of specimen = E<sub>T</sub> - E<sub>f</sub> = "+MildSteel[p][7]+" J";
+				if(MildSteel[p][6] == "Indefinite")
+				{
+					document.getElementById('4-1').innerHTML="Total loss of energy during transit of Hammer, E<sub>t</sub> =  Indefinite";
+					document.getElementById('4-2').innerHTML="Energy for failure of specimen = E<sub>t</sub> - E<sub>f</sub> = Indefinite";
+				}
+				else 
+				{
+					document.getElementById('4-1').innerHTML="Total loss of energy during transit of Hammer, E<sub>t</sub> = "+MildSteel[p][6]+" J";
+					document.getElementById('4-2').innerHTML="Energy for failure of specimen = E<sub>t</sub> - E<sub>f</sub> = "+MildSteel[p][7]+" J";
+				}
 			 }
 		    
 		},8500);
@@ -579,7 +745,13 @@ function myFun()
 				document.getElementById('i4-11i').style.visibility="visible";
 			}
 			if(flag==2){
-				document.getElementById('i4-11s').style.visibility="visible";
+				if(MildSteel[p][6] == "Indefinite")
+				{
+					document.getElementById('i4-11s').style.visibility="visible";
+				}
+				else{
+					document.getElementById('i4-11i').style.visibility="visible";
+				}
 			}			
 		},4200);
 		setTimeout(function(){
@@ -587,13 +759,22 @@ function myFun()
 			document.getElementById('i4-9').style.visibility="hidden";
 			document.getElementById('4-5').style.visibility="hidden";
 			// document.getElementById('i4-11i').style.visibility="visible";
+			//small specimen
 			if(flag==1){
 				document.getElementById('i4-11is').style.visibility="visible";
 				document.getElementById('i4-11is').style.animation="specimenFall 0.5s forwards";
 			}
 			if(flag==2){
-				document.getElementById('i4-11ss').style.visibility="visible";
-				document.getElementById('i4-11ss').style.animation="specimenFall 0.5s forwards";
+				if(MildSteel[p][6] == "Indefinite")
+				{
+					document.getElementById('i4-11ss').style.visibility="visible";
+					document.getElementById('i4-11ss').style.animation="specimenFall 0.5s forwards";
+				}
+				else
+				{
+					document.getElementById('i4-11is').style.visibility="visible";
+					document.getElementById('i4-11is').style.animation="specimenFall 0.5s forwards";
+				}
 			}
 			//big specimen
 			if(flag==1){
@@ -601,8 +782,15 @@ function myFun()
 				document.getElementById('i4-11i2').style.animation="moveSpecimen 0.5s forwards";
 			}
 			if(flag==2){
-				document.getElementById('i4-11s2').style.visibility="visible";
-				document.getElementById('i4-11s2').style.animation="moveSpecimen 0.5s forwards";
+				if(MildSteel[p][6] == "Indefinite")
+				{
+					document.getElementById('i4-11s2').style.visibility="visible";
+					document.getElementById('i4-11s2').style.animation="moveSpecimen 0.5s forwards";
+				}
+				else{
+					document.getElementById('i4-11i2').style.visibility="visible";
+					document.getElementById('i4-11i2').style.animation="moveSpecimen 0.5s forwards";
+				}
 			}
 			setTimeout(function(){
 				document.getElementById('i4-11i2').style.visibility="hidden";
@@ -627,6 +815,3 @@ function refresh()
 	document.getElementById('i4-11i2').style.animation="";
 	document.getElementById('i4-11s2').style.animation="";
 }	
-	
-	
-	
