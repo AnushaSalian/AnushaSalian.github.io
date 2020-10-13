@@ -1,5 +1,5 @@
 //on click of next button
-var flag=0;
+var flag=0;  //flag==1 => cast iron and flag==2 => Mild Steel
 var repeat=0;
 var a;
 var firsttime=false;
@@ -16,12 +16,12 @@ var steel= [[76.26,9.32,9.48,4.5,164],
 		   [76.2,9.6,9.23,5,164],
 		   [75.8,9.5,9.4,5,164]];
 var steelEf=[4,2,2,4,2,2,2,2,2,2];
-var steelEt=[56,54,46,51,48,43,49,45,44,41];
+var steelEt=[56,"Indefinite",46,"Indefinite",48,"Indefinite",49,"Indefinite",44,41]; //1,3,5,7=>Indefinite
 var a=0;
 var b=0;
 var c=0;
 var a1,a2,a3,b1,b2,b3,c1,c2,c3,d;
-var EEt=0;
+var EEt=0; var indefinite=false;
 
 // For cast iron
 var iron=[[75,9.5,9.44,4],
@@ -42,6 +42,8 @@ var e1,e2,e3,f1,f2,f3,g1,g2,g3,d;
 var iEEt=0;
 
 var p1 = Math.floor(Math.random() * steelEf.length);
+console.log(p1);
+
 var p2 = Math.floor(Math.random() * ironEf.length);
 
 function navNext()
@@ -294,8 +296,15 @@ function magic()
 	         document.getElementById('5-3s').style.visibility="visible";
 	         document.getElementById('5-4s').style.visibility="visible";
 			 document.getElementById('5-2s').innerHTML="Average loss of energy due to friction,E<sub>f</sub>  = "+a+" J";
-             document.getElementById('5-3s').innerHTML="Total Loss of energy E<sub>t</sub> during transit of hammer = "+b+" J";
-             document.getElementById('5-4s').innerHTML="Energy for failure of specimen = KU / Impact Value = E<sub>t</sub> - E<sub>f</sub> = "+c+" J";
+			 if(b=="Indefinite"){
+				document.getElementById('5-3s').innerHTML="Total Loss of energy E<sub>t</sub> during transit of hammer = Indefinite ";
+				document.getElementById('5-4s').innerHTML="Energy for failure of specimen = KU / Impact Value = E<sub>t</sub> - E<sub>f</sub> = Indefinite ";
+			 }
+			 else
+			 {	
+				document.getElementById('5-3s').innerHTML="Total Loss of energy E<sub>t</sub> during transit of hammer = "+b+" J";
+				document.getElementById('5-4s').innerHTML="Energy for failure of specimen = KU / Impact Value = E<sub>t</sub> - E<sub>f</sub> = "+c+" J";
+			 }
 			if(repeat==1)
 			{
 			     a1=a;
@@ -314,7 +323,11 @@ function magic()
                  b3=b;
 				 c3=c;				 
 			}
-			d=(c1+c2+c3)/3.00;
+			if(c1 == "Indefinite"){ c1 = 0; }
+			if(c2 == "Indefinite"){ c2 = 0; }
+			if(c3 == "Indefinite"){ c3 = 0; }
+			d=(c1+c2+c3)/2.00;
+			//d=(c1+c2+c3)/3.00;
 		 }
 		 
 		 
@@ -348,15 +361,42 @@ function magic()
 	             document.getElementById('5-3s').style.visibility="hidden";
 	             document.getElementById('5-4s').style.visibility="hidden";
 				document.getElementById('tab5').style.visibility="visible";
-                document.getElementById('5-11').innerHTML=a1;				
-                document.getElementById('5-12').innerHTML=b1;				
-                document.getElementById('5-13').innerHTML=c1;				
-                document.getElementById('5-21').innerHTML=a2;				
-                document.getElementById('5-22').innerHTML=b2;				
-                document.getElementById('5-23').innerHTML=c2;				
-                document.getElementById('5-31').innerHTML=a3;				
-                document.getElementById('5-32').innerHTML=b3;				
-                document.getElementById('5-33').innerHTML=c3;
+				//Trial 1
+                document.getElementById('5-11').innerHTML=a1;
+				if(c1 == 0)//Indefinite
+				{
+					document.getElementById('5-12').innerHTML="-";				
+					document.getElementById('5-13').innerHTML="-";
+				}
+				else
+				{
+					document.getElementById('5-12').innerHTML=b1;				
+					document.getElementById('5-13').innerHTML=c1;
+				}
+				//Trial 2
+                document.getElementById('5-21').innerHTML=a2;
+				if(c2 == 0)//Indefinite
+				{
+					document.getElementById('5-22').innerHTML="-";				
+					document.getElementById('5-23').innerHTML="-";	
+				}	
+				else
+				{				
+					document.getElementById('5-22').innerHTML=b2;				
+					document.getElementById('5-23').innerHTML=c2;
+				}
+				//Trial 3
+                document.getElementById('5-31').innerHTML=a3;
+				if(c3 == 0)//Indefinite
+				{
+					document.getElementById('5-32').innerHTML="-";				
+					document.getElementById('5-33').innerHTML="-";	
+				}
+				else
+				{
+					document.getElementById('5-32').innerHTML=b3;				
+					document.getElementById('5-33').innerHTML=c3;
+				}
 				document.getElementById('5-5').style.visibility="visible";
                 document.getElementById('5-5').innerHTML=" Average energy for failure of specimen = "+d.toFixed(2)+" J"; 				
 			 }
@@ -443,10 +483,34 @@ function step2()
 function step4()
 {
 	myStopFunction();
+	//mild steel
 	var sEt = steelEt[Math.floor(Math.random() * steelEt.length)];
-	EEt=sEt-a;
-	b=sEt;
-	c=EEt;
+	if(sEt ==  "Indefinite" && indefinite==true){ //Indefinite value should not repeat
+		console.log(sEt,indefinite, " sEt ==  Indefinite && indefinite==true");
+		sEt = steelEt[Math.floor(Math.random() * steelEt.length)];
+	}
+	if(repeat==3 && indefinite==false){ //Indefinite value should be displayed in third trial if not displayed in first 2 trials
+		sEt = "Indefinite";
+		indefinite=true;
+		console.log(sEt,indefinite," repeat==3 && indefinite==false");
+	}
+	console.log(indefinite);
+	if(sEt == "Indefinite"){
+		indefinite=true;
+		console.log(indefinite, " sEt == Indefinite");
+		EEt = "Indefinite";
+		b=sEt;
+		c=EEt;
+		//console.log("a="+a,"b="+b,"c="+c);
+	}
+	else
+	{
+		EEt=sEt-a;
+		b=sEt;
+		c=EEt;
+		//console.log("a="+a,"b="+b,"c="+c);
+	}
+	//cast iron 
 	var iEt = ironEt[Math.floor(Math.random() * ironEt.length)];
 	iEEt=iEt-e;
 	f=iEt;
@@ -485,8 +549,16 @@ function step4()
 		 }
 		 if(flag==2)
 		 {
-			document.getElementById('i4-sp2ms').style.visibility="visible";
-			document.getElementById('i4-7ms').style.visibility="visible";
+			if(sEt == "Indefinite")
+			{
+				document.getElementById('i4-sp2ms').style.visibility="visible";
+				document.getElementById('i4-7ms').style.visibility="visible";
+			}
+			else
+			{
+				document.getElementById('i4-sp2').style.visibility="visible";
+				document.getElementById('i4-7').style.visibility="visible";
+			}
 		 }
 	},800);
 	setTimeout(function(){
@@ -497,8 +569,15 @@ function step4()
 		}
 		if(flag==2)
 		{   
-			document.getElementById('4-1').innerHTML="Total loss of energy during transit of Hammer E<sub>t</sub> = "+sEt+" J";
-			document.getElementById('4-2').innerHTML="Energy for failure of specimen = E<sub>t</sub> - E<sub>f</sub> = "+EEt+" J";
+			if(sEt == "Indefinite"){
+				document.getElementById('4-1').innerHTML="Total loss of energy during transit of Hammer E<sub>t</sub> = "+sEt;
+				document.getElementById('4-2').innerHTML="Energy for failure of specimen = E<sub>t</sub> - E<sub>f</sub> = "+EEt;
+			}
+			else
+			{
+				document.getElementById('4-1').innerHTML="Total loss of energy during transit of Hammer E<sub>t</sub> = "+sEt+" J";
+				document.getElementById('4-2').innerHTML="Energy for failure of specimen = E<sub>t</sub> - E<sub>f</sub> = "+EEt+" J";
+			}
 		}
 	},800);
 	setTimeout(function(){
