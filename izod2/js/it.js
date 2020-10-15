@@ -17,11 +17,13 @@ var steel= [[76.26,9.32,9.48,4.5,164],
 		   [75.8,9.5,9.4,5,164]];
 var steelEf=[4,2,2,4,2,2,2,2,2,2];
 var steelEt=[56,"Indefinite",46,"Indefinite",48,"Indefinite",49,"Indefinite",44,41]; //1,3,5,7=>Indefinite
+var array1=[0,2,4,6,8,9];
+var array2=[1,3,5,7];//Indefinite
 var a=0;
 var b=0;
 var c=0;
 var a1,a2,a3,b1,b2,b3,c1,c2,c3,d;
-var EEt=0; var indefinite=false;
+var EEt=0; var indefinite=0;
 
 // For cast iron
 var iron=[[75,9.5,9.44,4],
@@ -484,38 +486,31 @@ function step4()
 {
 	myStopFunction();
 	//mild steel
-	var sEt = steelEt[Math.floor(Math.random() * steelEt.length)];
-	if(sEt ==  "Indefinite" && indefinite==true){ //Indefinite value should not repeat
-		console.log(sEt,indefinite, " sEt ==  Indefinite && indefinite==true");
-		sEt = steelEt[Math.floor(Math.random() * steelEt.length)];
-	}
-	if(repeat==3 && indefinite==false){ //Indefinite value should be displayed in third trial if not displayed in first 2 trials
-		sEt = "Indefinite";
-		indefinite=true;
-		console.log(sEt,indefinite," repeat==3 && indefinite==false");
-	}
-	console.log(indefinite);
-	if(sEt == "Indefinite"){
-		indefinite=true;
-		console.log(indefinite, " sEt == Indefinite");
-		EEt = "Indefinite";
-		b=sEt;
-		c=EEt;
-		//console.log("a="+a,"b="+b,"c="+c);
-	}
-	else
+	if(flag==2)
 	{
-		EEt=sEt-a;
-		b=sEt;
-		c=EEt;
-		//console.log("a="+a,"b="+b,"c="+c);
+		var sEt = steelEt[Math.floor(Math.random() * steelEt.length)];
+		
+		if((repeat==2 && indefinite>=1) || (repeat==3 && indefinite>=1)){ //Indefinite value should not repeat
+			var z = array1[Math.floor(Math.random() * array1.length)];
+			sEt=steelEt[z];
+		}
+		
+		else if(repeat==3 && indefinite==0) //Indefinite value should be displayed in third trial if not displayed in first 2 trials
+		{ 
+			sEt = "Indefinite";
+			indefinite=true;
+		}
+		checkIfIndefinite(sEt);
 	}
+
 	//cast iron 
-	var iEt = ironEt[Math.floor(Math.random() * ironEt.length)];
-	iEEt=iEt-e;
-	f=iEt;
-	g=iEEt;
-	 
+	if(flag==1)
+	{
+		var iEt = ironEt[Math.floor(Math.random() * ironEt.length)];
+		iEEt=iEt-e;
+		f=iEt;
+		g=iEEt;
+	}
 	document.getElementById('i4-3').style.visibility="hidden";
 	document.getElementById('i4-4').style.visibility="visible";
 	document.getElementById('i4-1').style.transformOrigin="0 0%";
@@ -570,8 +565,8 @@ function step4()
 		if(flag==2)
 		{   
 			if(sEt == "Indefinite"){
-				document.getElementById('4-1').innerHTML="Total loss of energy during transit of Hammer E<sub>t</sub> = "+sEt;
-				document.getElementById('4-2').innerHTML="Energy for failure of specimen = E<sub>t</sub> - E<sub>f</sub> = "+EEt;
+				document.getElementById('4-1').innerHTML="The test piece was not broken by striking energy of the testing machine.";
+				document.getElementById('4-2').innerHTML="So the impact value obtained is indefinite.";
 			}
 			else
 			{
@@ -593,6 +588,22 @@ function step4()
 		document.getElementById('i4-sp2').style.visibility="hidden";
 		document.getElementById('i4-sp2ms').style.visibility="hidden";
 	},8750);
+}
+
+function checkIfIndefinite(sEt){
+	if(sEt == "Indefinite")
+	{
+		indefinite++;
+		EEt = "Indefinite";
+		b=sEt;
+		c=EEt;
+	}
+	else if(sEt != "Indefinite")
+	{
+		EEt=sEt-a;
+		b=sEt;
+		c=EEt;
+	}
 }
 	
 function refresh()
