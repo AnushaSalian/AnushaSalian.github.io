@@ -1,17 +1,21 @@
 //flag==1 => Cast Iron and flag==2 => Mild Steel
-var flag=0; var repeat=0; var firsttime=false; var i=0;
-var Et=[34,45,47.5,48,41,43,40];
-// var EEt = Et[Math.floor(Math.random() * Et.length)];
-var EEt = 0; var run_once=true; var a=0;
+var flag=0; var repeat=0; var i=0; 
+
+var run_once=true; var a=0;
+
 var a1,b1,c1,a2,b2,c2,a3,b3,c3,avg=0;
 
+var val1=0; var vla2=0; var vla3=0;
+
 var p=Math.floor(Math.random()*(9));
+val1=p;
 
-var val1=0; var vla2=0;
+var indefinite=0;
 
-var indefinite=false;
-var array1=[0,2,3,5,6,8,9];
+var array1=[0,2,3,5,6,8,9];//not indefinite dataset from MildSteel array
+
 var array2=[1,4,7]; //indefinite dataset from MildSteel array
+
 // MildSteel=[[57.9,9.2,9.4,5,300,1,34,33],
            // [58.87,9.3,9.5,5,300,1,44.5,43.5],
            // [58.87,9.3,9.5,5,300,1,45,44],
@@ -158,7 +162,6 @@ function magic()
 	
 	else if(simsubscreennum==3)
 	{
-		//p=1;
 		if(repeat==0)
 		{
 			//cast iron
@@ -174,6 +177,7 @@ function magic()
 		}
 		else if(repeat>=1)
 		{
+			//p=Math.floor(Math.random()*(9));
 			if(flag==1)
 			{
 				document.getElementById('can3-1').style.visibility="visible";
@@ -190,8 +194,11 @@ function magic()
 		if(flag==1)
 		{
 			if(repeat==1)
+			{
+				//p=Math.floor(Math.random()*(9));
 				val1=p;
-			if(repeat==2)
+			}
+			else if(repeat==2)
 			{
 				do
 				{
@@ -199,92 +206,58 @@ function magic()
 			    }while(p==val1 || p==1);
 				val2=p;	
 			}
-			if(repeat==3)
+			else if(repeat==3)
 			{
 				do
 				{
 					p=Math.floor(Math.random()*(9));
 				}while(p==val1 || p==val2 || p==1);
 			}
+			displayTable(p);
 		}
 		if(flag==2)
 		{
-			if(repeat==1){
-				val1=p;
-				//console.log("repeat==1",p, MildSteel[p]);
-				if(p==1 || p==4 || p==7){
-					indefinite=true;
-				}	
-			}
-			if(repeat==2)
-			{
-				val2=p;
-				p=Math.floor(Math.random()*(9));
-				if((p==1 || p==4 || p==7) && indefinite==true){
-					var z=Math.floor(Math.random()*(6));
-					p=array1[z];
-				}
-				// // if((p==1 || p==4 || p==7) && indefinite==false){
-					 // // var a=Math.floor(Math.random()*(2));
-					 // // p=array2[a];
-					// // indefinite=true;
-				// // }
-				// if(indefinite==true){
-					// var a=Math.floor(Math.random()*(6));
-					// p=array1[a];
-				// }
-				// if(indefinite==false){
-					// var a=Math.floor(Math.random()*(2));
-					// p=array2[a];
-				// }
+			checkIfIndefinite(val1);
+			console.log("in");
+			// if(repeat==1){
+				// console.log("repeat1");
 				
-				if(p==1 || p==4 || p==7){
-					indefinite=true;
-				}	
-				//console.log("repeat==2",p, MildSteel[p]);
-			}
-			if(repeat==3)
-			{
-				//val2=p;
-				//p=Math.floor(Math.random()*(9));
-				if(indefinite==true){
+				// checkIfIndefinite(val1);
+			// }
+			// else
+			if(repeat==2) //Indefinite value should be displayed in third trial if not displayed in first 2 trials
+			{ 
+				console.log("repeat2");
+				if(indefinite==0)
+				{
+					p=Math.floor(Math.random()*(9));
+				}
+				else if(indefinite>=1)//Indefinite value should not repeat
+				{
 					var z=Math.floor(Math.random()*(6));
 					p=array1[z];
-					//console.log("repeat==31",p, MildSteel[p]);
 				}
-				else if(indefinite==false){
+				val2=p;
+				checkIfIndefinite(val2);
+			}
+			else if(repeat==3)//Indefinite value should not repeat
+			{ 
+				console.log("repeat3");
+				if(indefinite==0) //Indefinite value should be displayed in third trial if not displayed in first 2 trials
+				{ 
 					var z=Math.floor(Math.random()*(2));
 					p=array2[z];
-					//console.log("repeat==32",p, MildSteel[p]);
 				}
-				//p=Math.floor(Math.random()*(9));
-				if(p==1 || p==4 || p==7){
-					indefinite=true;
+				else if(indefinite>=1)
+				{
+					var z=Math.floor(Math.random()*(6));
+					p=array1[z];
 				}
-				//console.log("repeat==33",p, MildSteel[p]);
+				val3=p;
+				checkIfIndefinite(val3);
 			}
-		}
-	
-		
-		
-		if(repeat>=1)
-		{
-			if(flag==1)
-			{
-				document.getElementById('tabci1').style.visibility="visible";
-				document.getElementById('ci-l').innerHTML=CastIron[p][0];
-				document.getElementById('ci-b').innerHTML=CastIron[p][1];
-				document.getElementById('ci-d').innerHTML=CastIron[p][2];
-				document.getElementById('ci-dn').innerHTML=CastIron[p][3];
-			}
-			else if(flag==2)
-			{
-				document.getElementById('tabci1').style.visibility="visible";
-				document.getElementById('ci-l').innerHTML=MildSteel[p][0];
-				document.getElementById('ci-b').innerHTML=MildSteel[p][1];
-				document.getElementById('ci-d').innerHTML=MildSteel[p][2];
-				document.getElementById('ci-dn').innerHTML=MildSteel[p][3];
-			}
+			console.log(repeat,p,MildSteel[p],"out");
+			displayTable(p);
 		}
 		
 	}
@@ -319,8 +292,8 @@ function magic()
 	else if (simsubscreennum==5)
 	{ 
         refresh();
-		document.getElementById('4-3').innerHTML="000.0";
-		document.getElementById('4-4').innerHTML="000.0";
+		document.getElementById('4-3').innerHTML="0.000";
+		document.getElementById('4-4').innerHTML="0.000";
         document.getElementById('i3-1').style.visibility="hidden";
         document.getElementById('i3-2').style.visibility="hidden";
         document.getElementById('i3-4').style.visibility="hidden";
@@ -507,7 +480,37 @@ function magic()
 		 }
 	}
 }
-    
+
+function checkIfIndefinite(val){
+	if(MildSteel[val][6]=="Indefinite")
+	{
+		indefinite++;
+	}
+	console.log("p="+p,"val="+val,"indefinite="+indefinite);
+}
+  
+function displayTable(p){
+	if(repeat>=1)
+	{
+		if(flag==1)
+		{
+			document.getElementById('tabci1').style.visibility="visible";
+			document.getElementById('ci-l').innerHTML=CastIron[p][0];
+			document.getElementById('ci-b').innerHTML=CastIron[p][1];
+			document.getElementById('ci-d').innerHTML=CastIron[p][2];
+			document.getElementById('ci-dn').innerHTML=CastIron[p][3];
+		}
+		else if(flag==2)
+		{
+			document.getElementById('tabci1').style.visibility="visible";
+			document.getElementById('ci-l').innerHTML=MildSteel[p][0];
+			document.getElementById('ci-b').innerHTML=MildSteel[p][1];
+			document.getElementById('ci-d').innerHTML=MildSteel[p][2];
+			document.getElementById('ci-dn').innerHTML=MildSteel[p][3];
+		}
+	}
+	console.log("repeat="+repeat,"displayTable","p="+p,"indefinite="+indefinite);
+}	
 function step1()
 {
 	myStopFunction();
@@ -532,8 +535,8 @@ function step1()
 function step2()
 {
 	 myStopFunction();
-	 EEt = Et[Math.floor(Math.random() * Et.length)];
-	 a=EEt-1;
+	 // EEt = Et[Math.floor(Math.random() * Et.length)];
+	 // a=EEt-1;
 	 document.getElementById('i3-4').style.visibility="hidden";
 	 document.getElementById('gate').style.visibility="visible";
 	 setTimeout(function(){
@@ -697,8 +700,8 @@ function myFun()
 			 {
 				if(MildSteel[p][6] == "Indefinite")
 				{
-					 document.getElementById('4-3').innerHTML="000.0";
-					 document.getElementById('4-4').innerHTML="000.0";
+					 document.getElementById('4-3').innerHTML="&nbsp;----- ";
+					 document.getElementById('4-4').innerHTML="&nbsp;----- ";
 				}
 				else {
 					 document.getElementById('4-3').innerHTML="&nbsp;" +MildSteel[p][6];
@@ -718,8 +721,8 @@ function myFun()
 			 {
 				if(MildSteel[p][6] == "Indefinite")
 				{
-					document.getElementById('4-1').innerHTML="Total loss of energy during transit of Hammer, E<sub>t</sub> =  Indefinite";
-					document.getElementById('4-2').innerHTML="Energy for failure of specimen = E<sub>t</sub> - E<sub>f</sub> = Indefinite";
+					document.getElementById('4-1').innerHTML="The test piece was not broken by striking energy of the testing machine.";
+					document.getElementById('4-2').innerHTML="So the impact value obtained is indefinite.";
 				}
 				else 
 				{
@@ -728,7 +731,7 @@ function myFun()
 				}
 			 }
 		    
-		},8500);
+		},7500);
 		  
 		setTimeout(function(){
 			 document.getElementById('i4-10').style.visibility="visible";
