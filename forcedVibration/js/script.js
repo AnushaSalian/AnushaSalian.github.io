@@ -323,8 +323,8 @@
             ctx.clearRect(0,0,canvas.width,canvas.height);
             ctx.beginPath();
             ctx.strokeStyle="#000000";
-            ctx.arc(330,100, 3, 0, 2 * Math.PI, false);
-            ctx.fillText("\u2192 Vrednost frekv. odnosa ",340,105);
+            ctx.arc(315,80, 3, 0, 2 * Math.PI, false);
+            ctx.fillText("\u2192 Vrednost frekv. odnosa ",320,85);
             ctx.stroke();
             ctx.beginPath();
             ctx.fillStyle="#000000";
