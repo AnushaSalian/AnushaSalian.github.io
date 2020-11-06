@@ -323,46 +323,50 @@
             ctx.clearRect(0,0,canvas.width,canvas.height);
             ctx.beginPath();
             ctx.strokeStyle="#000000";
-            ctx.arc(315,80, 3, 0, 2 * Math.PI, false);
-            ctx.fillText("\u2192 Vrednost frekv. odnosa ",320,85);
+            ctx.arc(313,120, 3, 0, 2 * Math.PI, false);
+            ctx.fillText("\u2192 Vrednost frekv. odnosa ",320,125);
             ctx.stroke();
             ctx.beginPath();
             ctx.fillStyle="#000000";
             ctx.strokeStyle="#000000"
             ctx.lineWidth=1;
-            ctx.moveTo(100,0);
-            ctx.lineTo(100,230);
-            ctx.lineTo(390,230);
+            ctx.moveTo(100,100); //y axis
+            ctx.lineTo(100,330);
+            ctx.lineTo(390,330);
             ctx.font='10px Century Gothic';
             for(let i=1;i<8;i++){
-                ctx.fillText(i,90,230-i*30);
+                ctx.fillText(i,90,330-i*30);
             }
-            ctx.moveTo(100,200);
-            ctx.lineTo(390,200);
+			//straight line in graph from y=1
+            ctx.moveTo(100,297.5);
+            ctx.lineTo(390,297.5);
             ctx.stroke();
             ctx.font="18px Century Gothic";
-            ctx.fillText("\u03B7",390,230);
+			
+            ctx.fillText("\u03B7",392.5,338); //eta => \u03B7
             ctx.save();
             ctx.translate(200,200);
             ctx.rotate(-Math.PI/2);
             ctx.fillText("Prenosivost",0,-130);
             ctx.restore();
+			//curve
             ctxgraph.beginPath()
             ctxgraph.strokeStyle=color;
             ctxgraph.lineWidth=0.5;
-            ctxgraph.moveTo(100,230);
-            ctxgraph.moveTo(100,200);
+            ctxgraph.moveTo(100,327.5);
+            ctxgraph.moveTo(100,297.5);
             let i=0;
             while(i<xg&&xg<290){
-                ctxgraph.lineTo(100+i,230-magnifac(.01*i));
+                ctxgraph.lineTo(100+i,327.5-magnifac(.01*i));
                 ctxgraph.stroke();
                 i+=0.8;
             }
+			//operating level of eta (the circle in graph)
             ctxgraph.beginPath();
             ctxgraph.strokeStyle = "#000000";
             ctxgraph.lineWidth = 1;
             if(xg>290) {
-                let ny = 230 - magnifac(n);
+                let ny = 327.5 - magnifac(n);
                 if (ny <= 0)
                     ny = 5;
                 ctxgraph.arc(100 + 100 * n, ny, 3, 0, 2 * Math.PI, false);

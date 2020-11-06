@@ -121,7 +121,7 @@ canvas#graphscreen
 {
 	position:absolute;
 	left:30px;
-	top:200px;
+	top:100px;
 	height: 500px;
 	width: 550px;
 }
@@ -129,7 +129,7 @@ canvas#storegraph
 {
 	position:absolute;
 	left:30px;
-	top:200px;
+	top:100px;
 	height: 500px;
 	width: 550px;
 }
