@@ -44,9 +44,7 @@ class DynamicGraph {
         translate(this.x, this.y);
         rotate(radians(-90));
         text(this.yLabel, 10, -20);
-
         pop();
-
 
         push();
 
@@ -71,13 +69,11 @@ class DynamicGraph {
             vertex(this.x + this.graphs[this.graphs.length - 1][i][0], this.y - this.graphs[this.graphs.length - 1][i][1]);
         }
         endShape();
-        fill(255,255,255,1);
-        strokeWeight(10);
-        circle(this.x, this.y,10 ); //x,y,radius
+        // fill(255,255,255,1);
+        // strokeWeight(10);
+        // circle(this.x, this.y,10 ); //x,y,radius
 
         pop();
-
-        
 
         if (this.timer < this.graphs[this.graphs.length - 1].length) {
             this.timer += 1;
@@ -85,6 +81,4 @@ class DynamicGraph {
             //console.log(this.timer);
         }
     }
-
 }
-

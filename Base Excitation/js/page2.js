@@ -51,5 +51,5 @@ function runPage2() {
     _w.draw();
     y.draw();
 
-    clear.mousePressed(clearMe)
+    clear.mousePressed(clearMe);
 }
