@@ -1,18 +1,21 @@
 function clearMe() {
     magFac.graphs = [];
     //phaseAng.graphs = [];
+    relTrans.graphs = [];
 }
 
-function runPage2() {
+function runPage3() {
     background(255);
     image(bg, 0, 0);
 
     stroke(0);
+    stroke(0);
     fill(255);
     textStyle(BOLD);
+
     push();
     textSize(36);
-    textFont("Century Gothic")
+    textFont("Century Gothic");
     text('KINEMATSKA POBUDA', 210, 50);
 
     textSize(16);
@@ -39,11 +42,11 @@ function runPage2() {
     text('ψ = ' + (_w.inp / spring1.wn).toFixed(3), 310, 535);
     text('z = ' + z.inp, 310, 550);
 
-    magFac.draw();
-   // phaseAng.draw();
+    //magFac.draw();
+    relTrans.draw();
 
     button3.draw();
-    button4.draw();
+    //button4.draw();
 
     k.draw();
     m.draw();

@@ -15,12 +15,12 @@ function runPage1() {
 
     push();
     textSize(36);
-    textFont("Century Gothic")
-    text('BASE EXCITATION', 255, 50);
+    textFont("Century Gothic");
+    text('KINEMATSKA POBUDA', 210, 50);
 
     textSize(16);
-    text("VARIABLES", 655, 108.5);
-    text("CONTROLS", 655, 418.5);
+    text("KONTROLA", 647.5, 420); //controls
+    text("PROMENLJIVE", 642.5, 110); //variables
     pop();
 
     push();
@@ -45,16 +45,16 @@ function runPage1() {
     y2_graph.draw(255, 0, 0)
 
     textSize(14);
-    textStyle(BOLD);
     fill(231,114,43); //fill() to set the font color 
-    text('ωn = ' + (spring1.wn).toFixed(3)  + " rad/s", 310, 520);
-    text('η = ' + (_w.inp / spring1.wn).toFixed(3), 310, 535);
+    textStyle(BOLD);
+    text('ω = ' + (spring1.wn).toFixed(3) + " rad/s", 310, 520);
+    text('ψ = ' + (_w.inp / spring1.wn).toFixed(3), 310, 535);
     text('z = ' + z.inp, 310, 550);
 
+    textSize(16);
     fill(0);
-    textSize(24);
-    textStyle(NORMAL);
-    text("Harmonic Exitation", 62.5, 495);
+    textStyle(BOLD);
+    text("Harmonijska prinudna sila", 70, 495);
 
     k.draw();
     m.draw();

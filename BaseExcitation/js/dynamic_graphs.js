@@ -26,6 +26,7 @@ class DynamicGraph {
         }
         temp.label = [random(255), random(255), random(255)];
         temp.timer = 0;
+        temp.operation = floor(map(_w.inp / spring1.wn, this.minX, this.maxX, 0, this.w));
         this.graphs.push(temp);
     }
 
@@ -44,9 +45,7 @@ class DynamicGraph {
         translate(this.x, this.y);
         rotate(radians(-90));
         text(this.yLabel, 10, -20);
-
         pop();
-
 
         push();
 
@@ -57,6 +56,13 @@ class DynamicGraph {
             noFill();
             for (let i = 0; i < this.graphs[n].timer; i++) {
                 vertex(this.x + this.graphs[n][i][0], this.y - this.graphs[n][i][1]);
+                if (i == this.graphs[n].operation) {
+                    push();
+                    strokeWeight(5);
+                    stroke(0);
+                    point(this.x + this.graphs[n][i][0], this.y - this.graphs[n][i][1]);
+                    pop();
+                }
             }
             endShape();
         }
@@ -69,6 +75,13 @@ class DynamicGraph {
         noFill();
         for (let i = 0; i < j; i++) {
             vertex(this.x + this.graphs[this.graphs.length - 1][i][0], this.y - this.graphs[this.graphs.length - 1][i][1]);
+            if (i == this.graphs[this.graphs.length - 1].operation) {
+                push();
+                strokeWeight(5);
+                stroke(0);
+                point(this.x + this.graphs[this.graphs.length - 1][i][0], this.y - this.graphs[this.graphs.length - 1][i][1]);
+                pop();
+            }
         }
         endShape();
 
@@ -79,6 +92,4 @@ class DynamicGraph {
             this.graphs[this.graphs.length - 1].timer = this.timer;
         }
     }
-
 }
-

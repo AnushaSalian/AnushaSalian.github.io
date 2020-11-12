@@ -70,9 +70,9 @@ class NumberInput {
         push();
 
         fill(255);
+        textStyle(BOLD);
         strokeWeight(0);
         textFont("Century Gothic")
-        textStyle(BOLD);
         textSize(14);
         text(this.label, this.x - 10, this.y - 10);
 

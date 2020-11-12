@@ -1,5 +1,12 @@
 function handleEvents() {
     // console.log(mouseX, mouseY)
+    if (button4.in(mouseX, mouseY) && page2) {
+        resetGraphs();
+        page3 = true;
+        page2 = false;
+        relTrans.initialise();
+        //clear.remove();
+    }
     if (button1.in(mouseX, mouseY) && page1) {
         if (animation) {
             noLoop()
@@ -21,6 +28,7 @@ function handleEvents() {
         page1 = false;
         page2 = true;
 
+        textFont("Century Gothic");
         clear = createButton("Clear Graphs");
         clear.position(400, 150);
 
@@ -31,6 +39,12 @@ function handleEvents() {
         resetGraphs();
         page1 = true;
         page2 = false;
+        clear.remove();
+    }
+    if (button3.in(mouseX, mouseY) && page3) {
+        resetGraphs();
+        page2 = true;
+        page3 = false;
         clear.remove();
     }
 }

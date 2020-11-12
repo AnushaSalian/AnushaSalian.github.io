@@ -1,4 +1,3 @@
-// output x and input Ysinωt graph in page 1
 class Graph {
     constructor(x, y, h, w, yLabel, xLabel) {
         this.wave = [];
@@ -35,17 +34,16 @@ class Graph {
         }
         endShape();
 
-        //To draw xy coordinates 
+        //output x and Ysinwt graph 
         stroke(0);
-        strokeWeight(1)
+        strokeWeight(1);
         line(this.x, this.y, this.x, this.y + this.h);
         line(this.x, this.y, this.x, this.y - this.h);
         line(this.x, this.y, this.x + this.w, this.y);
 
-        //To label coordinates
-        fill(0);
-        strokeWeight(0);//outline coloring , 0 => black; 1 => white;
-        textSize(18); 
+        fill(0)
+        strokeWeight(0)
+        textSize(18);
         text(this.xLabel, this.x + this.w, this.y);
         translate(this.x, this.y)
         rotate(radians(-90))

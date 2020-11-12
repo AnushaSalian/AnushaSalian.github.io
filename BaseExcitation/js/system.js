@@ -61,30 +61,27 @@ class System {
 
         // base
         stroke(0);
-        rectMode(CENTER);
-        rect(this.x_equilibrium, this.y_equilibrium + 208 + this.y_base, 150, 10);
+        rectMode(CENTER)
+        rect(this.x_equilibrium, this.y_equilibrium + 208 + this.y_base, 150, 10)
 
         // mass
         stroke(1);
         strokeWeight(1);
         fill(1);
-        rectMode(CENTER);
-        rect(this.x_equilibrium, this.y_equilibrium + this.y, 150, 40);
+        rectMode(CENTER)
+        rect(this.x_equilibrium, this.y_equilibrium + this.y, 150, 40)
 
         pop();
     }
 
     static mag_func(x, obj) {
-        // let num = 1 + (2 * obj.z * x) * (2 * obj.z * x);
-        // let den = (1 - x * x) * (1 - x * x) + (2 * obj.z * x) * (2 * obj.z * x);
-        // let solution = Math.pow(num / den, 0.5);
+        let num = 1 + (2 * obj.z * x) * (2 * obj.z * x);
+        let den = (1 - x * x) * (1 - x * x) + (2 * obj.z * x) * (2 * obj.z * x);
+        let solution = Math.pow(num / den, 0.5)
+        return (solution);
+    }
 
-        // let num = Math.pow(x,2);
-        // let den1 = Math.pow((1-Math.pow(x,2)),2);
-        // let den2 = Math.pow(((obj.z * x)/(obj.m * (Math.sqrt(obj.k/obj.m)))),2);
-        // let den = Math.sqrt( den1 + den2);
-        // let solution = (num / den);
-
+    static rel_trans(x, obj){
         let num = x * x;
         let den1 = (1 - x * x) * (1 - x * x);
         let den21 = (obj.z * x) 
@@ -92,9 +89,10 @@ class System {
         let den2=den21/den22;
         let den = Math.sqrt( den1 + den2);
         let solution = (num / den);
-        console.log();
         return (solution);
     }
+
+     // arc(x,y,,rad in x, rad in y, startAngle, stopAngle);
 
     // static phase_func(x, obj) {
     //     let solution = Math.atan((2 * obj.z * x) / (1 - (x * x)));
