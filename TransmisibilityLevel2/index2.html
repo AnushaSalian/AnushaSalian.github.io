@@ -1,0 +1,274 @@
+<html>
+<head>
+<title>Transmisibility Level</title>
+<style>
+.slidecontainer {
+  width: 95%;
+  padding:5px;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 5px;
+  background: #ffffff;
+  outline: none;
+  opacity: 0.75;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 23px;
+  height: 24px;
+  border: 0;
+  background: url('images/slider_handles.png');
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 23px;
+  height: 24px;
+  border: 0;
+  background: url('images/slider_handles.png');
+  cursor: pointer;
+}
+</style>
+<link rel="stylesheet" href="css/tl.css" >
+</head>
+<body onload="draw(); plotGraph();">
+	<div id="container">
+		<div id="simtitle">Transmisibility Level</div>
+		
+		<canvas id="simscreen" height="400px" width="550px"></canvas>
+		<button id="clearGraph" onclick="clearGraph()">Clear Graph</button>
+		<div id="commentboxleft"></div>
+		<div id="commentboxright"></div>
+		
+		<div id="vartitle">VARIABLES</div>
+
+		<div id="variables">
+			<div class="variable">
+				<div class="varname">
+					<label title="Power a">Power a</label>
+					<input id="paSpinner" type="number" name="quantity" min="0.5" max="4" value="2" step="0.5" style="width:40%; border-radius:5px; outline:none;">
+				</div>
+				<div class="slidecontainer">
+					<input class="slider" id="paSlider" type="range" min="0.5" max="4" value="2" step="0.5" oninput="change()">
+				</div>
+			</div>
+		</div>
+		
+		<div id="ctrltitle">CONTROLS</div>
+		<p style="transform:rotate(-90deg); position:absolute;left:0px; top:280px;">Transmisibility level [dB]</p>
+		<p style=" position:absolute; left:170px; top:450px;">Frequency ratio</p>
+		<div id="controls">
+			<img id="playpausebutton" onclick="simstate()" src="images/bluepausedull.png" />
+		</div>
+
+		<div id="copyright" title="Developer : SOLVEr"> Copyright &copy; SOLVE The Virtual Lab @ NITK Surathkal </div>
+		
+	</div>
+
+<script>
+	var canvas = document.getElementById("simscreen");
+	var ctx = canvas.getContext("2d");
+
+
+	var gridSizeX=35;
+	var gridSizeY=55;
+
+	var startX = 101;
+	var startY = 65;
+	var endX = 322;
+	var endY = (65+((document.getElementById("paSlider").value*20)*7.05))
+	var amount = 0;
+	var w=canvas.width;
+	var h=canvas.height;
+	var pa=2;
+	var res=false;
+	//ctx.clearRect(0,0,w,h);
+	var num_lines_x=Math.floor(h/gridSizeX);
+	var num_lines_y=Math.floor(w/gridSizeY);
+	var graphid;
+	var arr=[];
+	var x;
+	var y;
+	//Animating Graph
+function graphanimate()
+{
+	graphid=requestAnimationFrame(graphanimate);
+	plotGraph();
+}
+		
+function draw()
+{
+	canvas = document.getElementById("simscreen");
+	ctx = canvas.getContext("2d");
+	
+	var w=canvas.width;
+	var h=canvas.height;
+
+	//ctx.clearRect(0,0,w,h);
+	var num_lines_x=Math.floor(h/gridSizeX);
+	var num_lines_y=Math.floor(w/gridSizeY);
+	
+	//x axis
+	for(i=0; i<=num_lines_x - 3; i++)
+	{
+		ctx.beginPath();
+		ctx.moveTo(100,65+(gridSizeX*i));
+		ctx.lineTo(322.5,65+(gridSizeX*i));
+		console.log(65+(gridSizeX*i));
+		if(i==num_lines_x - 3 || i==0)
+		{
+			ctx.lineWidth=2;
+			ctx.strokeStyle="#000000";
+		}
+		else
+		{
+			ctx.lineWidth=2;
+			ctx.strokeStyle="#A9A9A9";
+		}
+		ctx.stroke();
+	}
+	
+	//y axis
+	for(i=0; i<=num_lines_y - 6; i++)
+	{
+		ctx.beginPath();
+		if(i%2==0)
+		{
+			ctx.moveTo(101+(gridSizeY*i),65);
+			ctx.lineTo(101+(gridSizeY*i),345);
+		}
+		else 
+		{
+			ctx.moveTo(116+(gridSizeY*i),65);
+			ctx.lineTo(116+(gridSizeY*i),345);
+		}
+		if(i==num_lines_y - 6 || i==0)
+		{
+			ctx.lineWidth=2;
+			ctx.strokeStyle="#000000";
+		}
+		else
+		{
+			ctx.lineWidth=2;
+			ctx.strokeStyle="#A9A9A9";
+		}
+		ctx.stroke();	
+	}
+	
+	var x_axis_starting_point={ number : 25, suffix : '' };
+	var y_axis_starting_point={ number : 10, suffix : '' };
+	
+	 //numbering x axis
+	for(var i=0;i<5;i++)
+	{
+		ctx.font="10pt Century Gothic";
+		ctx.fillStyle="#000000";
+		ctx.textAlign="center";
+		<!-- ctx.fillText(x_axis_starting_point.number*i, 101+(gridSizeY*i), 360); -->
+		if(i==0)
+			ctx.fillText(x_axis_starting_point.number*i, 101+(gridSizeY*i), 360);
+		if(i==1)
+			ctx.fillText(5, 116+(gridSizeY*i), 360);
+		if(i==2)
+			ctx.fillText(10, 101+(gridSizeY*i), 360);
+		if(i==3)
+			ctx.fillText(50, 116+(gridSizeY*i), 360);
+		if(i==4)
+			ctx.fillText(100, 101+(gridSizeY*i), 360);
+		ctx.fill();
+	}
+
+	//numbering y axis
+	for(var i=0;i<9;i++)
+	{
+		ctx.font="10pt Century Gothic";
+		ctx.fillStyle="#000000";
+		ctx.textAlign="center";
+		if(i==0)
+			ctx.fillText(y_axis_starting_point.number*i,87.5,67.5+(gridSizeX*i));
+		else 
+			ctx.fillText(-(y_axis_starting_point.number*i),87.5,67.5+(gridSizeX*i));
+		ctx.fill();
+	}
+
+}	
+
+
+function change(){
+	pa=document.getElementById("paSlider").value;
+	document.getElementById("paSpinner").value=document.getElementById("paSlider").value;
+	document.getElementById("paSlider").value=document.getElementById("paSpinner").value;
+	startX = 101;
+	startY = 65;
+	endX = 322;
+	endY = (65+((pa*20)*7.05));
+	console.log(endX);
+	amount = 0;
+	res=false;
+	requestAnimationFrame(graphanimate);
+}
+function plotGraph()
+{
+		amount += 0.01; // change to alter duration
+		if (amount > 1) amount = 1;
+		ctx.beginPath();
+		ctx.lineWidth=1;
+		ctx.strokeStyle = "red";
+		ctx.moveTo(startX, startY);
+		if((startY + (endY - startY) * amount)<=349)
+		{
+			ctx.lineTo(startX + (endX - startX) * amount, startY + (endY - startY) * amount);
+			x=startX + (endX - startX) * amount;
+			y=startY + (endY - startY) * amount;
+		}
+		else
+		{
+			amount = 1;
+			<!-- x=320; -->
+			<!-- y=350; -->
+			cancelAnimationFrame(graphid);
+		}
+		ctx.stroke();
+		
+		if((amount==1) & (res==false))
+		{
+			res=true;
+			arr.push(pa);
+			ctx.font="10pt Century Gothic";
+			ctx.fillStyle="#000000";
+			var oct = 20*pa*0.3;
+			var dec = 20*pa;
+			var val = oct +"[dB/oct] = "+ dec+"[dB/dec]"; 
+			ctx.fillText(val, 407.5,75+((pa*20)*6.75));
+			if(pa<=2)
+				ctx.fillText(val, 407.5,75+((pa*20)*6.75));
+			else if(pa>2)
+			{
+				//ctx.fillText(val, 330,45+((pa*20)*6.75));
+				ctx.fillText(val, x,y-10);
+			}
+			ctx.fill();
+		}
+
+}
+function clearGraph()
+{
+	ctx.clearRect(0,0,w,h);
+	pa=0;
+	draw();
+}
+</script>
+</body>
+</html>
