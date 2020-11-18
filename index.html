@@ -15,10 +15,13 @@ function setSimualtionScreen(ele) {
 	//document.getElementById("simHead").innerHTML = ele.innerHTML;
 	console.log(ele);
 	switch(ele.id) {
+			case "tl": document.getElementById("can").src = "TransmisibilityLevel2/index2.html";
+						break;
 			case "baseExcitation": document.getElementById("can").src = "BaseExcitation/index.html";
 						break;
 			case "forcedVibration": document.getElementById("can").src = "forcedVibration/index.html";
 						break;
+			
 		case "Izod": document.getElementById("can").src = "izod2/index.html";
 						break;	
 		case "Charpy": document.getElementById("can").src = "charpy/index.html";
@@ -50,7 +53,8 @@ function setSimualtionScreen(ele) {
 			<div class="panel panel-default">
 				<div class="panel-heading"></div>
 					<div class="panel-body">
-					<div class="btn-toolbar">
+					<div class="btn-toolbar">TransmisibilityLevel
+						<button id="tl" class="btn btn-primary btn-sm" onclick="setSimualtionScreen(this);" >Transmisibility Level</button><br/><br/>
 						<button id="baseExcitation" class="btn btn-primary btn-sm" onclick="setSimualtionScreen(this);" >Base Excitation</button><br/><br/>
 						<button id="forcedVibration" class="btn btn-primary btn-sm" onclick="setSimualtionScreen(this);" title="Click here to view simulation">Forced Vibration</button><br><br>
 						<!--<button id="Izod" class="btn btn-primary btn-sm" onclick="setSimualtionScreen(this);" >Izod test</button><br><br>
