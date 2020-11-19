@@ -101,6 +101,7 @@
 	var arr=[];
 	var x;
 	var y;
+	var color="red";
 	//Animating Graph
 function graphanimate()
 {
@@ -224,6 +225,7 @@ function draw()
 }	
 
 function change(){
+	color='rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')';
 	pa=document.getElementById("paSlider").value;
 	document.getElementById("paSpinner").value=document.getElementById("paSlider").value;
 	document.getElementById("paSlider").value=document.getElementById("paSpinner").value;
@@ -245,7 +247,7 @@ function plotGraph()
 		if (amount > 1) amount = 1;
 		ctx.beginPath();
 		ctx.lineWidth=1;
-		ctx.strokeStyle = "red";
+		ctx.strokeStyle = color;
 		ctx.moveTo(startX, startY);
 		if((startY + (endY - startY) * amount)<=349)
 		{
@@ -265,7 +267,7 @@ function plotGraph()
 			res=true;
 			arr.push(pa);
 			ctx.font="10pt Century Gothic";
-			ctx.fillStyle="#000000";
+			ctx.fillStyle=color;
 			var oct = 20*pa*0.3;
 			var dec = 20*pa;
 			var val = oct +"[dB/oct] = "+ dec+"[dB/dec]"; 
