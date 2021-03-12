@@ -1495,7 +1495,7 @@ function magic()
 		
 		var wd = (dataset[p][1] - mldWght)/mldVol;
 		var wc = ((dataset[p][3] - dataset[p][4])/(dataset[p][4] - dataset[p][2]))*100;
-		var dd = wd/(1+wc);
+		var dd = wd/(1+(wc/100));
 		cnt=0;
 		document.getElementById("chk1").onclick=function()
 		{
