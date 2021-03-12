@@ -48,7 +48,7 @@ var questions=["What is the weight of the soil sample taken for the experiment?"
 				"How many blows should be given during compaction of the soil?",
 				"In how many layers the soil sample should be placed in the mould?",
 				"The process of Compaction involves removal of __________."];
-var options2=[["4.6kg","2.6kg","6.6kg","5.6kg"],//2.6kg
+var options2=[["4.0kg","2.0kg","3.0kg","5.0kg"],//2.0kg
 			  ["20µm","30µm","10µm","50µm"],//20µm
 			  ["30","20","28","25"],//25   
 			  ["3","4","6","7"],//3
