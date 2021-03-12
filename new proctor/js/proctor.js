@@ -27,11 +27,11 @@
 			 // [1.08,4400,30.6,38.66,37.58,5],
 			 // [1.49,4370,26.71,37.22,35.73,6]];
 			 
-var dataset=[[0.65,4020,30,36.3,35.65,1], //Guruprasad (interchanged result) 1
-			 [1.10,4245,32.4,41.27,40.17,2], //3
-			 [1.08,4400,30.6,38.66,37.58,3], //5
-			 [1.49,4370,26.71,37.22,35.73,4], //6
-			 [1.46,4290,29.8,37.5,36.04,5]]; //4
+var dataset=[[0.65,4020,30,36.3,35.65,1,140], //Guruprasad (interchanged result) 1
+			 [1.10,4245,32.4,41.27,40.17,2,200], //3
+			 [1.08,4400,30.6,38.66,37.58,3,260], //5
+			 [1.49,4370,26.71,37.22,35.73,4,320], //6
+			 [1.46,4290,29.8,37.5,36.04,5,380]]; //4
 
 var mldDia = 10, mldHght=12.5, hdr=31, layerNo=3, compEnergy=3, mldWght=2315, mldVol=981.74;  //Guruprasad
 // var mldDia = 10, mldHght=13, hdr=31, layerNo=3, compEnergy=3, mldWght=2181, mldVol=1021.01; //(aishwarya)
@@ -172,7 +172,10 @@ function magic()
 		 document.getElementById('1-3').style.visibility="visible";
 		 document.getElementById('trial').style="visibility:visible; left: 700px; top: 100px;position: absolute;font-weight: bold;text-transform: uppercase;";
 		 document.getElementById('trial').innerHTML="Trial : " + repeat;
-		 
+		if(repeat>=2)
+		{
+			document.getElementById("p1-1").innerHTML="";
+		}			
 		setTimeout(function()
 		{
 			myInt = setInterval(function(){ animatearrow(); }, 500);
@@ -243,7 +246,7 @@ function magic()
 												document.getElementById('1-5').style.visibility="visible";
 												setTimeout(function()
 												{
-													document.getElementById("p1-1").innerHTML="2600.00";
+													document.getElementById("p1-1").innerHTML="2000.00";
 													document.getElementById("nextButton").style.visibility="visible";
 												},500);
 											},1500);
@@ -588,7 +591,7 @@ function magic()
 		document.getElementById("5-1").style.visibility = "visible";
 		document.getElementById("5-4").style.visibility = "visible";
 		
-		document.getElementById("p5-2").innerHTML="Add "+dataset[p][0]+"g of water into the graduated jar.";
+		document.getElementById("p5-2").innerHTML="Add "+dataset[p][6]+"ml of water into the graduated jar.";
 		document.getElementById("b5-1").onclick=function()
 		{
 			document.getElementById("b5-1").onclick="";
@@ -1614,7 +1617,7 @@ function magic()
 		{
 			document.getElementById("p17-1").innerHTML="Optimum moisture content, W = "+dataX[2]+",  Maximum dry unit = "+dataY[2]+" g/cc";
 			document.getElementById("p17-1").style.visibility="visible";
-		},500);
+		},1500);
 	}
 }
 
