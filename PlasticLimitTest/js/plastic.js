@@ -959,7 +959,7 @@ function magic()
 			var res2=document.getElementById("res2");
 			validateAnswer(id2, awc, mark2, chk2, res2);
 		}
-		var ip = (30.8 - awc);
+		var ip = (25.75 - awc);
 		document.getElementById("chk3").onclick=function()
 		{
 			var id3=document.getElementById("ip");
