@@ -380,30 +380,33 @@ function magic()
 	{
 		setTimeout(function()
 		{
-			blinkArrow(420,175,0,30);
+			blinkArrow(330,125,270,30);
 			document.getElementById("10-5").onclick=function()
 			{
 				myStopFunction();
 				document.getElementById("10-5").onclick="";
 				document.getElementById("10-6").style.visibility="visible";
 				document.getElementById("10-7").style.visibility="visible";
-				blinkArrow(690,195,270,30);
-				document.getElementById("10-7").onclick=function()
+				blinkArrow(650,95,270,30);
+				document.getElementById("10-6").onclick=function()
 				{
 					myStopFunction();
-					document.getElementById("10-7").onclick="";
-					document.getElementById("10-7").style.animation="rotateValve 1.5s forwards";
-					document.getElementById("10-2").style.animation="moveVane 1.5s forwards";
+					document.getElementById("10-6").onclick="";
+					document.getElementById("10-6").style.visibility="hidden";
+					document.getElementById("10-7").style.visibility="hidden";
+					document.getElementById("10-8").style.visibility="visible";
+					document.getElementById("p10-1").style.visibility="visible";
+					document.getElementById("10-8").style.transformOrigin="top left";
+					document.getElementById("10-8").style.animation="rotateValve 1s 2 forwards";
+					document.getElementById("10-2").style.animation="moveVane 2s forwards";
 					setTimeout(function()
 					{
 						document.getElementById("10-8").style.visibility="hidden";
-						setTimeout(function()
-						{
-							document.getElementById("nextButton").style.visibility="visible";
-							document.getElementById("10-6").style.visibility="hidden";
-							document.getElementById("10-7").style.visibility="hidden";
-						},200);
-					},1000);
+						document.getElementById("p10-1").style.visibility="hidden";
+						document.getElementById("nextButton").style.visibility="visible";
+						document.getElementById("10-6").style.visibility="hidden";
+						document.getElementById("10-7").style.visibility="hidden";
+					},2200);
 				}
 			}
 		},500);
