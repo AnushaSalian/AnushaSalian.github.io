@@ -1,0 +1,67 @@
+<html>
+<head>
+<script language="JavaScript" type="text/javascript" src="js/jquerymin.js"></script>
+<style>
+#parent {
+	position: relative;
+	width: 300px;
+	height: 300px;
+	border: 1px solid rgba(0,0,0,0.1);
+	border-radius: 50%;
+	transform: rotate(0deg);
+	transition: transform 3.5s linear;
+}
+#child {
+	position: absolute;
+	top: 5px;  
+	left: 110px;  
+}
+</style>
+</head>
+<body>
+	<div id="parent">
+		<div id="child">
+			<img src="images/handWithKnob.png" />
+		</div>
+	</div>
+	<button id="button">Click</button>
+	
+</body>
+<script>
+var _CURRENT_ANGLE = 0;
+
+$("#button").on('click', function() {
+	_CURRENT_ANGLE += 360;
+
+	$("#parent").css({ transform: 'rotate(' + _CURRENT_ANGLE + 'deg)' });
+	<!-- $("#child").css({ transform: 'rotate(-' + _CURRENT_ANGLE + 'deg)' }); -->
+});
+
+		<!-- $("#button").on('click', function() { -->
+		<!-- alert("hjkhk"); -->
+		<!-- $("#parent").get(0).animate([ -->
+				<!-- { transform: 'rotate(0deg)' }, -->
+				<!-- { transform: 'rotate(120deg)' }, -->
+			<!-- ],  -->
+			<!-- { -->
+				<!-- duration: 700, -->
+				<!-- easing: 'linear', -->
+				<!-- iterations: 1, -->
+				<!-- fill: 'forwards' -->
+			<!-- } -->
+		<!-- ); -->
+
+		<!-- $("#child").get(0).animate([ -->
+				<!-- { transform: 'rotate(0deg)' }, -->
+				<!-- { transform: 'rotate(-120deg)' }, -->
+			<!-- ],  -->
+			<!-- { -->
+				<!-- duration: 700, -->
+				<!-- easing: 'linear', -->
+				<!-- iterations: 1, -->
+				<!-- fill: 'forwards' -->
+			<!-- } -->
+		<!-- ); -->
+	<!-- }); -->
+	</script
+</html>
